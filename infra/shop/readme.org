@@ -1,0 +1,9 @@
+#+TITLE: NAS-T shop
+#+DESCRIPTION: The NAS-T shop codebase
+
+* Overview
+The NAS-T shop is a simple, secure web-app. The web ui talks to the
+shop-server, auth-server, and an external payment processor directly.
+- Resources
+  - [[https://stripe.com/docs/api][stripe/docs/api]]
+  - [[https://stripe.com/docs/webhooks/test][stripe/docs/webhooks/test]]

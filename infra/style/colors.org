@@ -1,0 +1,9 @@
+#+TITLE: style
+#+DESCRIPTION: style and design guidelines
+
+* css
+- use [[file:clean.theme][clean.theme]] for org files
+- use [[file:mvp.css][mvp.css]] for small and simple HTML needs
+  - [[https://andybrewer.github.io/mvp/][link]]
+- TODO [2023-07-30 Sun] : htmlize/org.css with default colors applied
+* colors

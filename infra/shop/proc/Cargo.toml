@@ -1,0 +1,11 @@
+[package]
+name = "proc"
+version = "0.1.0"
+edition = "2021"
+[dependencies]
+async-stripe = "0.22.2"
+clap = { version = "4.3.19", features = ["derive"] }
+log = "0.4.19"
+tokio = { version = "1.29.1", features = ["full"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.17"

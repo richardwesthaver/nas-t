@@ -2,7 +2,7 @@
 #+DESCRIPTION: NAS Technology
 #+AUTHOR: Richard Westhaver <ellis@rwest.io>
 #+DATE: 2023-07-28 Fri
-#+SETUPFILE: ~/org/clean.theme
+#+SETUPFILE: infra/style/clean.theme
 #+INFOJS_OPT: view:info toc:nil
 * About Us
 NAS-T is a grassroots Network Area Server (NAS) technology and service
@@ -93,7 +93,6 @@ The one-man production workhorse.
 - rackmount/wheel extensions
 - 2x GPU
 - PCIe
-- bluetooth
 - 16-256GB RAM
 *** MPS-2
 Professional grade, media-optimized NAS.
