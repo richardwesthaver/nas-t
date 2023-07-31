@@ -1,3 +1,4 @@
+//! main.rs --- web-server
 use axum::body::{boxed, Body};
 use axum::http::{Response, StatusCode};
 use axum::{response::IntoResponse, routing::get, Router};
@@ -10,9 +11,8 @@ use tower::{ServiceBuilder, ServiceExt};
 use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 
-// Setup the command line interface with clap.
 #[derive(Parser, Debug)]
-#[clap(name = "server", about = "A server for our wasm project!")]
+#[clap(name = "web-server", about = "nas-t.net backend")]
 struct Opt {
     /// set the log level
     #[clap(short = 'l', long = "log", default_value = "debug")]
