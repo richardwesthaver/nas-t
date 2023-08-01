@@ -1,9 +1,3 @@
-#+TITLE: NAS-T
-#+DESCRIPTION: NAS-Technology
-#+AUTHOR: Richard Westhaver <ellis@rwest.io>
-#+DATE: 2023-07-28 Fri
-#+SETUPFILE: infra/style/clean.theme
-#+INFOJS_OPT: view:info toc:nil
 * About Us
 NAS-T is a grassroots Network Area Server (NAS) technology and service
 provider based in New London, CT. We are a group of IT and Data
@@ -63,33 +57,22 @@ cost. We aim to build a community of NAS enthusiasts and experts who
 can share their experience and empower their local communities. We
 will sell hardware and services at fair and transparent costs to
 support our mission and encourage everyone to take back their data.
-* TODO Products [0/4]
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:31]
-:END:
-** TODO pitstop
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:31]
-:END:
+
+* Products
+** pitstop
 tiny NAS. The most convenient option for single users or small
 families.
 - raspberry pi kit
 - storage :: 2x 500GB-4TB HDD/80-1TB SSD = 8TB max
 - modular :: stack units and run in parallel, control with the homie
-** TODO homie
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
+** homie
 The secure, fast, private cloud NAS for the home and small businesses.
 - discrete home NAS chasis
 - storage :: 5x 500GB-10TB HDD/2TB SSD = 50TB max
 - p2p :: P2P sharing across the Internet with friends+family
 - modular :: variety of hardware options -- 4-128GB RAM, intel chip,
   GPU optional
-** TODO MPS
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
+** MPS
 The Media Production Server (MPS) line is designed for studios across
 all disciplines in digital media. In this market we expect to compete
 with other custom hardware solutions designed as a traditional NAS,
@@ -113,10 +96,7 @@ Professional grade, media-optimized NAS.
 - 64-512GB RAM
 *** MPS-X
 Fully custom media solution.
-** TODO DPS
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
+** DPS
 The Data Production System (DPS) is the goto when high-throughput and
 availability is a must. These units are built to support office spaces
 of all sizes and scale up to the largest of corporate networks. Each
@@ -141,6 +121,7 @@ Data Production Server (DPS) 2.
 - 4x GPU
 *** DPS-X
 Fully custom datacenter-grade solution.
+
 * Services
 ** Deployment
 We offer on-site deployment services for all customers within our

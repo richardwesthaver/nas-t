@@ -4,159 +4,36 @@
 #+DATE: 2023-07-28 Fri
 #+SETUPFILE: infra/style/clean.theme
 #+INFOJS_OPT: view:info toc:nil
-* About Us
-NAS-T is a grassroots Network Area Server (NAS) technology and service
-provider based in New London, CT. We are a group of IT and Data
-specialists offering a replacement for managed cloud storage services
-such as Google Drive, DropBox, iCloud, and OneDrive.
+* Overview
+This is the open-source codebase of The NAS Technology Company
+([[https://nas-t.net][NAS-T]]). Development is done at [[https://lab.rwest.io/comp/startup/nas-t][lab.rwest.io/comp/startup/nas-t]] and
+mirrored on [[https://github.com/richardwesthaver/nas-t][github]].
+- STATUS :: ALPHA
+- LICENSE :: [[file:LICENSE][MPL]]
+** Introduction
+Welcome to the NAS-T codebase. For more about The NAS Technology
+Company refer to the [[file:ABOUT][ABOUT]] file.
+*** Thinking Fast, Going Slow
+- [2023-08-01 Tue] :: /a note from the author/ \\
+  Greetings stranger. My name is Richard Westhaver and I'm a computer
+  programmer living in Connecticut. I started this company as a means
+  to provide high-quality NAS solutions to my local community and
+  encourage others to do the sam. There is much work to be done but
+  it's quite exciting, and I hope you will be along for the ride :).
 
-Our product-line consist of custom-built home servers which run our
-open-source and highly configurable NAS software stack. We provide the
-software for free without exception, and offer the hardware on our
-online store for anyone to purchase and deploy themselves.
+  Right now, the ideas are flowing and I'm working through a list of
+  experiments, piecing together the perfect solution - the one with
+  the most power. Some hardware experiments will follow in the coming
+  weeks.
 
-The primary value-add for the customer is our service options. We
-provide operational support for our products at all levels from
-single-user homes to multi-tenant offices at a low monthly cost. Our
-fleet of service offerings are designed to support customers who have
-little to no technology experience while still providing expert
-support to our advanced users who are extending our tools to suit
-their needs.
+  At this stage, my goals are:
+  1. think fast - develop /good/ ideas as quickly as humanly possible
+  2. go slow - prioritize detailed implementations
 
-The motivation for NAS-T comes from my personal frustration with
-modern cloud storage services. What started as simple file-sharing has
-turned into 'Web File Systems' with a contagious vendor lock-in
-effect. Everyone has experienced this at some point - try switching
-from Apple to Android, or Windows to Mac, Google Cloud to DropBox. Why
-is this so hard?
-
-The answer is that it is because the edges of these services are
-*designed to protect your data from yourself*. The inconvenient truth
-is that *you do not own your data*. Don't worry. There's a simple
-solution: you must take what is yours.
-
-The cloud provider owns your data. You don't even own the rights to
-access your data. That is rented out by the provider. The solutions we
-offer remedy that. Our mission, above all, is to put you /irrefutably/
-in total control of your data.
-
-The best part is that while you're in the driver's seat, you choose
-your passengers. You can allow Google Cloud services or DropBox to
-mirror your personal cloud to leave your existing devices unaffected,
-temporarily access some files, or kick them out of the car completely.
-
-What's different about NAS-T is that when it comes to your data, we
-don't even assume that we're a passenger. Every single cloud data
-service we know is grabbing at the wheel, and worst of all, they
-actively try to hide it from their customers. As a company, we simply
-think this is wrong. We don't think there is any gray area or room for
-negotiation, because these companies brag about using private data to
-drive ad revenues to their investors. They are not providing their
-service in good faith to the customer, preferring to charge them a
-door fee like the corporate-cloud bouncers they are.
-
-At NAS-T we value your privacy /and/ your right to own your data
-without exception. We aim to provide the best /private/ cloud storage
-service software using cutting-edge technology which the large,
-entrenched service providers aren't capable of implementing, at no
-cost. We aim to build a community of NAS enthusiasts and experts who
-can share their experience and empower their local communities. We
-will sell hardware and services at fair and transparent costs to
-support our mission and encourage everyone to take back their data.
-* TODO Products [0/4]
+  PS. the website ([[file:infra/web][infra/web]]) is somewhat of an exception - we're just
+  throwing that online and coming back to work out the kludges later.
+* Roadmap [0/1]
+** TODO MVP
 :LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:31]
+- State "TODO"       from              [2023-08-01 Tue 17:27]
 :END:
-** TODO pitstop
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:31]
-:END:
-tiny NAS. The most convenient option for single users or small
-families.
-- raspberry pi kit
-- storage :: 2x 500GB-4TB HDD/80-1TB SSD = 8TB max
-- modular :: stack units and run in parallel, control with the homie
-** TODO homie
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
-The secure, fast, private cloud NAS for the home and small businesses.
-- discrete home NAS chasis
-- storage :: 5x 500GB-10TB HDD/2TB SSD = 50TB max
-- p2p :: P2P sharing across the Internet with friends+family
-- modular :: variety of hardware options -- 4-128GB RAM, intel chip,
-  GPU optional
-** TODO MPS
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
-The Media Production Server (MPS) line is designed for studios across
-all disciplines in digital media. In this market we expect to compete
-with other custom hardware solutions designed as a traditional NAS,
-since large volumes of media data need to be stored and made available
-to workstations and it is a good solution for high-throughput media
-shops. We take things a step further with our software designed
-specifically for media workflows and our custom hardware offerings.
-*** MPS-1
-The one-man production workhorse.
-- audio/video streaming
-- library management
-- rackmount/wheel extensions
-- 2x GPU
-- PCIe
-- 16-256GB RAM
-*** MPS-2
-Professional grade, media-optimized NAS.
-- modular A/V IO hardware
-- 2x Intel/AMD cpu
-- 4x GPU
-- 64-512GB RAM
-*** MPS-X
-Fully custom media solution.
-** TODO DPS
-:LOGBOOK:
-- State "TODO"       from              [2023-07-30 Sun 18:32]
-:END:
-The Data Production System (DPS) is the goto when high-throughput and
-availability is a must. These units are built to support office spaces
-of all sizes and scale up to the largest of corporate networks. Each
-DPS is unique, and consists of a DPS unit communicating with any
-number of DPN units.
-*** DPN
-Data Production Node. 
-- lightweight
-- optimized for scalability
-- DPS signal boost, caching, and edge compute
-*** DPS-1
-Data Production Server (DPS) 1.
-- the production-grade private cloud data solution. 
-- 2x ATX
-- 4x CPU
-- 4x GPU
-*** DPS-2
-Data Production Server (DPS) 2.
-- the lab-grade private cloud data solution.
-- 2x ATX
-- 4x CPU
-- 4x GPU
-*** DPS-X
-Fully custom datacenter-grade solution.
-* Services
-** Deployment
-We offer on-site deployment services for all customers within our
-service area. Our most prized asset is our relationships with
-community members and we have a passion for educating folks from all
-backgrounds in how to control and manage their personal data.
-** On-site Support
-Sometimes there's a solution, but it's tricky to implement. Other
-times it's just easier to call in the experts so you can focus on
-bigger things. Whatever the need, we're just a call or ping away.
-** Expert Support
-We provide a 1-on-1 support subscription with an expert which is
-available for a small monthly fee and includes the option to receive
-software updates and access to our beta environment where
-early-development features are available for you to experiment with.
-** Enterprise Support
-Our Enterprise Support package is for organizations who want to
-integrate NAS-T as a tool in their business. We provide consulting,
-in-house development, training, and maintenance services.

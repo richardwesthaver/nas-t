@@ -1,4 +1,5 @@
 ;;; infra/web/tests.lisp --- API tests for nas-t.net landing page
-(def-package :comp.nas-t.web.tests)
+(defpackage :nas-t.infra.web.tests
+  (:use :cl))
 
-(in-package :comp.nas-t.web.tests)
+(in-package :nas-t.infra.web.tests)

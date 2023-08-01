@@ -5,16 +5,18 @@ use yew_router::prelude::*;
 
 #[derive(Clone, Routable, PartialEq)]
 enum Route {
-    #[at("/")]
-    Home,
-    #[at("/hello-server")]
-    HelloServer,
+  #[at("/")]
+  Home,
+  #[at("/hello-server")]
+  HelloServer,
+  // #[at("/chat")]
+  // Chat,
 }
 
 fn switch(routes: Route) -> Html {
     match routes {
-        Route::Home => html! { <h1>{ "Hello Frontend" }</h1> },
-        Route::HelloServer => html! { <HelloServer /> },
+      Route::Home => html! { <h1>{ "Hello Frontend" }</h1> },
+      Route::HelloServer => html! { <HelloServer /> },
     }
 }
 
@@ -78,6 +80,5 @@ fn hello_server() -> Html {
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
-    console_error_panic_hook::set_once();
     yew::Renderer::<App>::new().render();
 }

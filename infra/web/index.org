@@ -1,0 +1,15 @@
+#+TITLE: NAS-T
+#+DESCRIPTION: NAS-Technology
+#+AUTHOR: Richard Westhaver <ellis@rwest.io>
+# #+SETUPFILE: ../../style/clean.theme
+# #+INFOJS_OPT: view:info toc:nil
+#+OPTIONS: num:nil ^:nil _:nil email:t \n:nil Tex:t LaTeX:t date:nil timestamp:nil title:nil html-postamble:nil
+#+BIND: org-html-self-link-headlines t
+#+HTML_DOCTYPE: html5
+#+EXPORT_FILE_NAME: ui/index.html
+#+HTML_HEAD: <link data-trunk rel="sass" href="index.scss" />
+# #+HTML_HEAD: <link rel="stylesheet" href="https://nas-t.net/{fixme}" />
+#+HTML_HEAD: <link rel="shortcut icon" href="favicon.ico">
+#+HTML_HEAD: <link data-trunk rel="copy-file" href="favicon.ico"/>
+#+HTML_HEAD: <link data-trunk rel="rust"/>
+#+HTML_HEAD: <base data-trunk-public-url/>

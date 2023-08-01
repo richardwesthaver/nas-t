@@ -4,4 +4,5 @@
 This codebase contains the source for [[https://nas-t.net][nas-t.net]]. We are hosting an app
 for development flexibility but most of the time it's a loose wrapper
 for a static site. The content for the site is located in the [[file:org][org]]
-directory. The files are 
+directory. The files are mirrors of their counter-parts in the docs
+folder at the root, but optimized for HTML among other things.

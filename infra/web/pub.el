@@ -3,7 +3,6 @@
 ;; Copyright (C) 2023  ellis
 
 ;; Author: ellis <ellis@rwest.io>
-;; Keywords: 
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -18,10 +17,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
-
-;; 
-
 ;;; Code:
 (require 'rw-macs)
 (require 'ox-publish)
@@ -29,8 +24,9 @@
 
 (defvar nas-t-web-project
   (list "nas-t.net"
-	:base-directory (path-join nas-t-web-dir "org")
+	:base-directory nas-t-web-dir
 	:publishing-directory (path-join nas-t-web-dir "ui")
+	:exclude "readme.org"
 	:base-extension "org"
 	:recursive nil
 	:htmlized-source t
@@ -39,7 +35,7 @@
 (defun nas-t-web-publish (&optional &rest files)
   "Publish the contents of `nas-t-web-content-dir' or FILES if provided."
   (interactive)
-  (let ((files (or files (directory-files (path-join nas-t-web-dir "org") t "^[^.].*"))))
+  (let ((files (or files (directory-files nas-t-web-dir t "^[^.].*[.]org$"))))
     (message "publishing files for nas-t.net: %S" files)
     (setq org-html-style-default ""
 	  org-html-scripts ""
