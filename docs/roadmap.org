@@ -1,0 +1,101 @@
+#+TITLE: roadmap
+* 0.1.0 [0/3]                                                       :current:
+** TODO MVP [1/6]
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:14]
+:END:
+*** DONE acquire domain
+:LOGBOOK:
+- State "DONE"       from              [2023-08-01 Tue 19:16]
+:END:
+- [X] nas-t.net
+*** TODO nas-t.net                                               :web:rust:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:14]
+:END:
+A basic landing page with the NAS-T mission, links, and contact info
+is needed.
+
+The site should be a web-app and have basic client-side request
+capabilities for submitting inquiries/comments.
+**** TODO client [0/3]                                            :client:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:23]
+:END:
+SPA
+- index
+- about
+- software
+- community
+- products?
+- services?
+***** TODO styles                                                 :style:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:19]
+:END:
+Put together some color palettes and sass to make our web components
+pretty. Design in modular fashion.
+***** TODO components
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:22]
+:END:
+***** TODO hooks
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:22]
+:END:
+****** TODO mailme
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:30]
+:END:
+**** TODO server [0/2]                                            :server:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:22]
+:END:
+***** TODO mailme route
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:29]
+:END:
+- POST string (validated email)
+- return status
+***** TODO errors
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:32]
+:END:
+- basic scaffolding
+- impl IntoResponse
+*** TODO nas-t daemon                                              :design:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:33]
+:END:
+*** TODO nas-t protocol                                            :design:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:34]
+:END:
+*** TODO nas-t CLI client                                     :design:impl:
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:34]
+:END:
+*** TODO prototype
+:LOGBOOK:
+- State "TODO"       from              [2023-08-01 Tue 19:36]
+:END:
+- proof-of-concept on x86-64 GNU/Linux Intel CPU (zor)
+- run on LAN with remote clients
+- show capabilities and limitations
+- perform basic benchmarks and discuss results
+** TBD pitch
+- marketing/community approach
+- define rhetoric
+- optimized for variety of audiences
+** TBD demo
+- assess hardware options
+  - soc
+    - must run GNU/Linux (for now..)
+    - look locally, what can be re-purposed?
+    - compare performance,heat,cost
+  - storage
+    - define required I/O speeds
+    - define standard connector reqs based on soc
+  - optimize linux kernel/dist
+- infra/releng infra/deploy
+- no accessories, ssh access only (or display port based on soc)

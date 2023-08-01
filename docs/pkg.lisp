@@ -1,1 +1,2 @@
-(defpackage nas-t.docs)
+(defpackage nas-t.docs
+  (:use :cl :nas-t))
