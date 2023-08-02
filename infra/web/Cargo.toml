@@ -1,5 +1,5 @@
 [workspace]
-members = ["ui","server"]
+members = ["client","server"]
 resolver = "2"
 [profile.release]
 lto = true

@@ -1,9 +1,4 @@
 //! main.rs --- web-server
-use std::{
-  net::{IpAddr, Ipv6Addr, SocketAddr},
-  path::PathBuf,
-  str::FromStr,
-};
 use axum::{
   body::{boxed, Body},
   http::{Response, StatusCode},
@@ -11,30 +6,35 @@ use axum::{
   routing::get,
   Router,
 };
+use clap::Parser;
+use std::{
+  net::{IpAddr, Ipv6Addr, SocketAddr},
+  path::PathBuf,
+  str::FromStr,
+};
 use tokio::fs;
 use tower::{ServiceBuilder, ServiceExt};
-use tower_http::{services::ServeDir,trace::TraceLayer};
+use tower_http::{services::ServeDir, trace::TraceLayer};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-use clap::Parser;
 
 #[derive(Parser, Debug)]
 #[clap(name = "web-server", about = "www.nas-t.net web services")]
 struct Opt {
-    /// set the log level
-    #[clap(short = 'l', long = "log", default_value = "debug")]
-    log_level: String,
+  /// set the log level
+  #[clap(short = 'l', long = "log", default_value = "debug")]
+  log_level: String,
 
-    /// set the listen addr
-    #[clap(short = 'a', long = "addr", default_value = "::1")]
-    addr: String,
+  /// set the listen addr
+  #[clap(short = 'a', long = "addr", default_value = "::1")]
+  addr: String,
 
-    /// set the listen port
-    #[clap(short = 'p', long = "port", default_value = "13008")]
-    port: u16,
+  /// set the listen port
+  #[clap(short = 'p', long = "port", default_value = "13008")]
+  port: u16,
 
-    /// set the directory where static files are to be found
-    #[clap(long = "static-dir", default_value = "../dist")]
-    static_dir: String,
+  /// set the directory where static files are to be found
+  #[clap(long = "static-dir", default_value = "../dist")]
+  static_dir: String,
 }
 
 #[tokio::main]
@@ -44,7 +44,8 @@ async fn main() {
   tracing_subscriber::registry()
     .with(
       tracing_subscriber::EnvFilter::try_from_default_env()
-	.unwrap_or_else(|_| format!("{},hyper=info,mio=info", opt.log_level).into()))
+        .unwrap_or_else(|_| format!("{},hyper=info,mio=info", opt.log_level).into()),
+    )
     .with(tracing_subscriber::fmt::layer())
     .init();
 
@@ -54,9 +55,9 @@ async fn main() {
   // let chat_state = Arc::new(ChatState{user_set, tx});
 
   let app = Router::new()
-//    .route("/chat", get(ws_handler))
-//    .with_state(chat_state)
-   .route("/api/hello", get(hello))
+    //    .route("/chat", get(ws_handler))
+    //    .with_state(chat_state)
+    .route("/api/hello", get(hello))
     .fallback_service(get(|req| async move {
       match ServeDir::new(&opt.static_dir).oneshot(req).await {
         Ok(res) => {
@@ -73,7 +74,7 @@ async fn main() {
                 }
                 Ok(index_content) => index_content,
               };
-	      
+
               Response::builder()
                 .status(StatusCode::OK)
                 .body(boxed(Body::from(index_content)))
@@ -89,7 +90,7 @@ async fn main() {
       }
     }))
     .layer(ServiceBuilder::new().layer(TraceLayer::new_for_http()));
-  
+
   let sock_addr = SocketAddr::from((
     IpAddr::from_str(opt.addr.as_str()).unwrap_or(IpAddr::V6(Ipv6Addr::LOCALHOST)),
     opt.port,
@@ -104,5 +105,5 @@ async fn main() {
 }
 
 async fn hello() -> impl IntoResponse {
-    "hello from server!"
+  "hello from server!"
 }

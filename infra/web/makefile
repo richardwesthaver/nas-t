@@ -1,11 +1,14 @@
 IP?=::1
 PORT?=13009
 R?=cargo
-.PHONY:test ui dev-api clean fmt
+all:client server
+.PHONY:clean fmt client server
 # TODO 2023-08-01: replace with organ.who
-pub:index.org pub.el;emacs --batch --load pub.el --eval (nas-t-web-publish)
+# pub:content.org pub.el;emacs --batch --load pub.el --eval (nas-t-web-publish)
 test:;
-ui:org;cd ui;CARGO_TARGET_DIR=../target-trunk trunk serve --address $(IP) --port $(PORT)
-dev-api:;cd server; cargo watch -- cargo run -- --port 13008
-clean:;rm -rf target-trunk dist trunk Cargo.lock
+
+client:;cd client;CARGO_TARGET_DIR=../target-trunk trunk serve --address $(IP) --port $(PORT)
+server:;cd server;cargo watch -- cargo run -- --port 13008
+
+clean:;rm -rf target-trunk dist target Cargo.lock
 fmt:;$(R) fmt

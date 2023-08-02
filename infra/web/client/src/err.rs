@@ -1,4 +1,4 @@
-#[derive(Clone,Debug,PartialEq,Eq)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Error {
   Unauthorized,
   Forbidden,
