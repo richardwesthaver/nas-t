@@ -1,3 +1,3 @@
-.*[.](html|fasl|lock|env|elc|eln)$
+.*[.](fasl|lock|elc|eln)$
 .*(target|dist)/.*
 .*Cargo.lock$
