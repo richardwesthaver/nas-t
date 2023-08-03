@@ -1,35 +1,48 @@
 HACKING --- code notes and hacker quickstart
 
-STYLE: space=2, line=88, kebab-case preferred
-
+STYLE:
+  space=2, line=88, kebab-case
+  ~1024 line max for single-file mods
+  ~512 line max/file for multi-file mods
+       
 LAYOUT:
-- src   : nas-t daemon and clients
-- tests : nas-t tests
-- docs  : nas-t documentation
-- infra : infrastructure
-  - auth   : web-auth service
-  - style  : common style assets
-  - shop   : shop.nas-t.net
-  - web    : nas-t.net
-  - releng : release engineering
+  - src/     : nas-t source tree
+    - core     : core modules
+    - proto    : protocol defs
+    - platform : hardware support
+  - tests/   : nas-t tests
+  - docs/    : nas-t documentation
+  - infra/   : infrastructure
+    - auth     : web-auth service
+    - style    : common style assets
+    - shop     : shop.nas-t.net
+      - proc     : stripe service
+    - web      : nas-t.net
+      - client   : wasm ui
+      - server   : http server
+    - releng   : release engineering
 
 NOTES:
-- NAS-T's core langs are Common Lisp and Rust. We use the most recent
-stable versions of SBCL and the Rust compiler.
+  - NAS-T's core langs are Common Lisp and Rust. We use the most recent
+  stable versions of SBCL and the Rust compiler.
 
-- The source is under Mercurial version control. If you wish to
-contribute your changes upstream, it is recommended to use the
-upstream source.
+  - We use contrib libraries from SBCL throughout the codebase,
+  other Common Lisp implementations are not supported.
 
-- To load the Common Lisp systems you will need the following
-dependencies (not on quicklisp):
-  - SXP   - https://lab.rwest.io/ellis/sxp
-  - ORGAN - https://lab.rwest.io/ellis/organ
+  - The source is under Mercurial version control. If you wish to
+  contribute your changes upstream, it is recommended to use the
+  upstream source.
 
-- The website code at infra/web requires the Trunk program for
-building the web assets which you can install with cargo.
+  - To load the Common Lisp systems you will need the following
+  dependencies (not on quicklisp):
+    - MACS  - https://lab.rwest.io/ellis/macs
+    - SXP   - https://lab.rwest.io/ellis/sxp
+    - ORGAN - https://lab.rwest.io/ellis/organ
 
-- GNU/Linux is the primary compile target for all software,
-but other Unix-like platforms are supported (MacOS).
+  - The website code at infra/web requires the Trunk program for
+  building the web assets which you can install with cargo.
 
-- Microsoft Windows is not supported.
+  - GNU/Linux is the primary compile target for all software,
+  but other Unix-like platforms are supported (MacOS).
+
+  - Microsoft Windows is not supported.

@@ -1,9 +1,15 @@
-#+TITLE: style
-#+DESCRIPTION: style and design guidelines
+#+TITLE: colors
+#+DESCRIPTION: color palettes
+* Overview
+Color palettes are an important element of the overall company
+branding and form the basis for our UI designs. The /palettes/
+available here provide collections of colors in a few portable
+formats: SXP, JSON, and CSV. You can use these as an input to a
+script, or use this document as a guide for implementing them in your
+UI manually.
+** Examples
+* Palettes
+** NAS-T Dark
+** NAS-T Light
 
-* css
-- use [[file:clean.theme][clean.theme]] for org files
-- use [[file:mvp.css][mvp.css]] for small and simple HTML needs
-  - [[https://andybrewer.github.io/mvp/][link]]
-- TODO [2023-07-30 Sun] : htmlize/org.css with default colors applied
-* colors
+

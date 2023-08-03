@@ -1,24 +1,44 @@
-//! main.rs --- web-server
+//! main.rs --- nas-t web-server
+
+//! This is a small micro-service designed to serve simple routes.
+
+//! ROUTES:
+//! - mailme :: verify and append email to a file
+
 use axum::{
-  body::{boxed, Body},
-  http::{Response, StatusCode},
-  response::IntoResponse,
-  routing::get,
+  routing::post,
   Router,
+  Form,
 };
 use clap::Parser;
 use std::{
   net::{IpAddr, Ipv6Addr, SocketAddr},
-  path::PathBuf,
   str::FromStr,
+  path::PathBuf,
 };
-use tokio::fs;
-use tower::{ServiceBuilder, ServiceExt};
-use tower_http::{services::ServeDir, trace::TraceLayer};
+use serde::Deserialize;
+use validator::Validate;
+use tower::ServiceBuilder;
+use tower_http::trace::TraceLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
+#[derive(Debug,Validate,Deserialize)]
+struct User {
+  #[validate(email)]
+  mail: String,
+  #[validate(length(min=1,max=88))]
+  name: String,
+  #[validate(length(max=1024))]
+  message: String,
+}
+
+async fn user(Form(user): Form<User>) -> &'static str {
+  if let Ok(user) = user.validate() {
+    log::info!("added user: {:?}", user);
+    "OK" } else { "ERR" }}
+
 #[derive(Parser, Debug)]
-#[clap(name = "web-server", about = "www.nas-t.net web services")]
+#[clap(name = "web-server", about = "nas-t.net micro-service")]
 struct Opt {
   /// set the log level
   #[clap(short = 'l', long = "log", default_value = "debug")]
@@ -32,15 +52,14 @@ struct Opt {
   #[clap(short = 'p', long = "port", default_value = "13008")]
   port: u16,
 
-  /// set the directory where static files are to be found
-  #[clap(long = "static-dir", default_value = "../dist")]
-  static_dir: String,
+  #[clap(short = 'f', long = "file", default_value = "mailme.list")]
+  file: PathBuf,
 }
 
 #[tokio::main]
 async fn main() {
   let opt = Opt::parse();
-  // enable console logging
+
   tracing_subscriber::registry()
     .with(
       tracing_subscriber::EnvFilter::try_from_default_env()
@@ -57,38 +76,7 @@ async fn main() {
   let app = Router::new()
     //    .route("/chat", get(ws_handler))
     //    .with_state(chat_state)
-    .route("/api/hello", get(hello))
-    .fallback_service(get(|req| async move {
-      match ServeDir::new(&opt.static_dir).oneshot(req).await {
-        Ok(res) => {
-          let status = res.status();
-          match status {
-            StatusCode::NOT_FOUND => {
-              let index_path = PathBuf::from(&opt.static_dir).join("index.html");
-              let index_content = match fs::read_to_string(index_path).await {
-                Err(_) => {
-                  return Response::builder()
-                    .status(StatusCode::NOT_FOUND)
-                    .body(boxed(Body::from("index file not found")))
-                    .unwrap()
-                }
-                Ok(index_content) => index_content,
-              };
-
-              Response::builder()
-                .status(StatusCode::OK)
-                .body(boxed(Body::from(index_content)))
-                .unwrap()
-            }
-            _ => res.map(boxed),
-          }
-        }
-        Err(err) => Response::builder()
-          .status(StatusCode::INTERNAL_SERVER_ERROR)
-          .body(boxed(Body::from(format!("error: {err}"))))
-          .expect("error response"),
-      }
-    }))
+    .route("/user", post(move |u| user(u)))
     .layer(ServiceBuilder::new().layer(TraceLayer::new_for_http()));
 
   let sock_addr = SocketAddr::from((
@@ -102,8 +90,4 @@ async fn main() {
     .serve(app.into_make_service())
     .await
     .expect("Unable to start server");
-}
-
-async fn hello() -> impl IntoResponse {
-  "hello from server!"
 }
