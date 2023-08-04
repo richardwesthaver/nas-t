@@ -8,3 +8,5 @@ pub enum Error {
   DeserializeError,
   RequestError,
 }
+
+pub type Result<T> = Result<T,Error>;

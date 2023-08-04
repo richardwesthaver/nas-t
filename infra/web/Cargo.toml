@@ -1,6 +1,7 @@
 [workspace]
 members = ["client","server"]
 resolver = "2"
+license = "MPL2"
 [profile.release]
 lto = true
 opt-level = 'z'
