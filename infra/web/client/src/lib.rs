@@ -5,7 +5,6 @@ pub mod index;
 pub mod about;
 pub mod app;
 
-pub const CONTENT: &'static str = include_str!("../content.html");
 pub const ABOUT: &'static str = include_str!("../about.html");
 pub const MOTIVATION: &'static str = include_str!("../motivation.html");
 pub const SOLUTION: &'static str = include_str!("../solution.html");

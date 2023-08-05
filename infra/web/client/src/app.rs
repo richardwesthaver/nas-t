@@ -1,7 +1,5 @@
 use patternfly_yew::prelude::*;
 use yew::prelude::*;
-use yew_nested_router::prelude::{Switch as RouterSwitch, *};
-use yew_nested_router::Target;
 use crate::{ contact::Contact,
   index::*, about::About,
 };
@@ -19,37 +17,15 @@ where
     )
 }
 
-#[derive(Debug, Default, Clone, PartialEq, Eq, Target)]
-pub enum AppRoute {
-//    Component(Component),
-//    #[target(rename = "fullpage")]
-//    FullPageExample(FullPage),
-//    Layout(Layout),
-  #[default]
-  Index,
-  About,
-  Contact,
-}
-
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
         <BackdropViewer>
             <ToastViewer>
-                <Router<AppRoute> default={AppRoute::Index}>
-                    <RouterSwitch<AppRoute> render={switch_app_route} />
-                </Router<AppRoute>>
+	<AppPage><Index/></AppPage>
             </ToastViewer>
         </BackdropViewer>
     }
-}
-
-fn switch_app_route(target:AppRoute) -> Html {
-  match target {
-    AppRoute::Index => html!{<AppPage><Index /></AppPage>},
-    AppRoute::About => html!{<AppPage><About /></AppPage>},
-    AppRoute::Contact => html!{<AppPage><Contact /></AppPage>},
-  }
 }
 
 #[derive(Clone, Debug, PartialEq, Properties)]
@@ -59,54 +35,73 @@ pub struct PageProps {
 
 #[function_component(AppPage)]
 fn page(props: &PageProps) -> Html {
-    let callback_lab = use_open(
-        "https://lab.rwest.io/comp/nas-t",
-        "_blank",
-    );
+  let callback_home = use_open(
+    "https://nas-t.net","_self");
+  let callback_lab = use_open(
+    "https://lab.rwest.io/comp/nas-t",
+    "_blank"
+  );
 
-    let callback_github = use_open(
-        "https://github.com/richardwesthaver/nas-t",
-        "_blank",
-    );
+  let callback_github = use_open(
+    "https://github.com/richardwesthaver/nas-t",
+    "_blank",
+  );
 
-    let backdropper = use_backdrop();
+  let brand = html!(
+    <MastheadBrand  onclick={callback_home}>
+      <Brand src="logo.svg" alt="NAS-T Logo"/>
+      </MastheadBrand>);
 
-    let onabout = Callback::from(move |_| {
-        if let Some(backdropper) = &backdropper {
-            backdropper.open(html!(<About/>));
-        }
-    });
+  let backdropper = use_backdrop();
 
-    let onthemeswitch = Callback::from(|state| match state {
-        true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
-        false => gloo_utils::document_element().set_class_name(""),
-    });
+  let onabout = use_callback(
+    |_,bd|
+    if let Some(bd) = bd {
+      bd.open(html!(<About/>))},
+    backdropper.clone());
 
-    let tools = html!(
-        <Toolbar full_height=true>
-            <ToolbarContent>
-                <ToolbarGroup
-                    modifiers={ToolbarElementModifier::Right.all()}
-                    variant={GroupVariant::IconButton}
-                >
-                    <ToolbarItem>
-                        <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
-                    </ToolbarItem>
-                    <ToolbarItem>
-                        <Button variant={ButtonVariant::Plain} icon={Icon::Gitlab} onclick={callback_lab}/>
-                        <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
-                    </ToolbarItem>
-                    <ToolbarItem>
-        <Button variant={ButtonVariant::Link} icon={Icon::InfoCircle} onclick={onabout}>{"About"}</Button>
-        </ToolbarItem>
-        </ToolbarGroup>
-        </ToolbarContent>
-        </Toolbar>
-    );
+  let oncontact = use_callback(
+    |_,bd|
+    if let Some(bd) = bd {
+      bd.open(html!(<Contact/>))},
+    backdropper);
 
-    html! (
-        <Page {tools}>
-            { for props.children.iter() }
-        </Page>
-    )
+  let onthemeswitch = Callback::from(|state| match state {
+    true => gloo_utils::document_element().set_class_name("pf-v5-theme-dark"),
+    false => gloo_utils::document_element().set_class_name(""),
+  });
+
+  let tools = html!(
+    <Toolbar full_height=true>
+      <ToolbarContent>
+      <ToolbarGroup
+      modifiers={ToolbarElementModifier::Right.all()}
+    variant={GroupVariant::IconButton}
+    >
+      <ToolbarItem>
+      <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
+      </ToolbarItem>
+      <ToolbarItem>
+      <Button variant={ButtonVariant::Plain} icon={Icon::Gitlab} onclick={callback_lab}/>
+      <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
+      </ToolbarItem>
+      <ToolbarItem>
+      <Dropdown
+      position={Position::Right}
+    icon={Icon::QuestionCircle}
+    variant={MenuToggleVariant::Plain}>
+      <MenuAction onclick={onabout}>{"About"}</MenuAction>
+      <MenuAction onclick={oncontact}>{"Contact"}</MenuAction>
+      </Dropdown>
+      </ToolbarItem>
+      </ToolbarGroup>
+      </ToolbarContent>
+      </Toolbar>
+  );
+  
+  html! (
+    <Page {brand} {tools}>
+    { for props.children.iter() }
+    </Page>
+  )
 }

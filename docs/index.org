@@ -14,3 +14,4 @@ software. Choose one of the topics below to get started.
   API Documentation for developers
 - [[file:roadmap.org][Roadmap]]
   The NAS-T development roadmap
+- [[file:notes.org][Notes]]

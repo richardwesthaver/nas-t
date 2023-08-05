@@ -14,8 +14,20 @@ pub fn contact() -> Html {
     } else {
       ValidationResult::default()
     }});
+  let footer = html!{
+    <><ActionGroup>
+      <Button variant={ButtonVariant::Primary} label="Submit" onclick={submit}/>
+      <Button variant={ButtonVariant::Link} label="Cancel"/>
+      </ActionGroup>
+      </>};
   html!{
+    <><Bullseye plain=true>
+      <Modal
+      title = {"Contact"}
+    description = {"Submit your name and e-mail to receive updates about NAS-T"}
+    footer={footer}>
     <Form>
+      <Switch label="Keep Me Posted" label_off="Don't Email Me" checked=false/>
       <FormGroupValidated<TextInput>
       label="E-mail"
       validator={validator.clone()}
@@ -31,12 +43,9 @@ pub fn contact() -> Html {
     >
       <TextInput value={(*value).clone()}
     {onchange}
-    placeholder="Optional Message"
+    placeholder="Message"
     autofocus=true/>
       </FormGroupValidated<TextInput>>
-      <ActionGroup>
-      <Button variant={ButtonVariant::Primary} label="Submit" onclick={submit}/>
-      </ActionGroup>
-      </Form>
+      </Form></Modal></Bullseye></>
   }
 }
