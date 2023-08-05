@@ -3,16 +3,17 @@ use yew::prelude::*;
 
 #[function_component(About)]
 pub fn about() -> Html {
+  let about = Html::from_html_unchecked(crate::ABOUT.into());
     html!(
       <Bullseye
 	plain=true>
         <AboutModal
-        background_image_src="nas-t-cloud-w.png"
+//        background_image_src="nas-t-cloud-w.png"
         brand_image_src="logo.png"
         brand_image_alt="NAS-T logo"
         product_name="The NAS Technology Company"
         trademark="Copyright © 2023 NAS-T">
-        <p>{crate::ABOUT}</p>
+        <Card><CardBody>{about}</CardBody></Card>
         <br />
         <DescriptionList mode={DescriptionListMode::Horizontal}>
         <DescriptionGroup term="Version">{env!("CARGO_PKG_VERSION")}</DescriptionGroup>

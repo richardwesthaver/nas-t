@@ -51,11 +51,30 @@ pub fn index() -> Html {
       "<div><code>The NAS Technology Company</code></div>"
         .into(),
     );
-  let content = Html::from_html_unchecked(crate::CONTENT.into());
+  let about = Html::from_html_unchecked(crate::ABOUT.into());
+  let motivation = Html::from_html_unchecked(crate::MOTIVATION.into());
+  let solution = Html::from_html_unchecked(crate::SOLUTION.into());
+  let mission = Html::from_html_unchecked(crate::MISSION.into());
+  let products = Html::from_html_unchecked(crate::PRODUCTS.into());
+  let services = Html::from_html_unchecked(crate::SERVICES.into());
     html! {
       <>
         <Page title="NAS-T" {subtitle}>
-      {content}
+	<Stack gutter=true>
+	<Card>
+	<CardBody>{about}</CardBody>
+	<CardDivider/>
+	<CardBody>{motivation}</CardBody>
+	<CardDivider/>
+	<CardBody>{solution}</CardBody>
+	<CardDivider/>
+	<CardBody>{mission}</CardBody>
+	<CardDivider/>
+	<CardBody>{products}</CardBody>
+	<CardDivider/>
+	<CardBody>{services}</CardBody>
+	</Card>
+      </Stack>
       </Page>
         </>
     }

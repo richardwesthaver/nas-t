@@ -2,8 +2,8 @@ use patternfly_yew::prelude::*;
 use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 use yew_nested_router::Target;
-use crate::{form::MessageText,
-	    index::*, about::About,
+use crate::{ contact::Contact,
+  index::*, about::About,
 };
 
 #[hook]
@@ -46,9 +46,9 @@ pub fn app() -> Html {
 
 fn switch_app_route(target:AppRoute) -> Html {
   match target {
-    AppRoute::Contact => html!{<AppPage><p /></AppPage>},
     AppRoute::Index => html!{<AppPage><Index /></AppPage>},
     AppRoute::About => html!{<AppPage><About /></AppPage>},
+    AppRoute::Contact => html!{<AppPage><Contact /></AppPage>},
   }
 }
 
@@ -107,7 +107,6 @@ fn page(props: &PageProps) -> Html {
     html! (
         <Page {tools}>
             { for props.children.iter() }
-      <MessageText />
         </Page>
     )
 }
