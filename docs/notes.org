@@ -1,6 +1,5 @@
 #+TITLE: notes
 #+BIBLIOGRAPHY: notes.bib
-#+BIND: org-cite-export-processors '((t csl))
 * File Systems
 ** BTRFS
 #+begin_quote
@@ -30,13 +29,20 @@ servers. This entails challenges on many different fronts.
 #+end_quote
 -- [cite/t/f:@btrfs]
 ** ZFS
-** TMPFS
-** EXT4
+-- [cite/t/f:@zfs]
 
+- core component of TrueNAS software
+** TMPFS
+-- [cite/t/f:@tmpfs]
+- in-mem FS
+** EXT4
+-- [cite/t/f:@ext4]
 * Storage Mediums
 ** HDD
-** SDD
+** SSD
 ** Flash
 ** NVMe
+-- [cite/t/f:@nvme-ssd-ux]
+** eMMC
 * Refs
 #+print_bibliography:

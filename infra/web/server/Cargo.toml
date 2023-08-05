@@ -2,6 +2,7 @@
 name = "server"
 version = "0.1.0"
 edition = "2021"
+license = "MPL2"
 [[bin]]
 name = "nas-t-web-server"
 path = "main.rs"

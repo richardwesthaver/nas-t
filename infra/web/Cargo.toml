@@ -1,7 +1,6 @@
 [workspace]
 members = ["client","server"]
 resolver = "2"
-license = "MPL2"
 [profile.release]
 lto = true
 opt-level = 'z'
@@ -19,4 +18,4 @@ patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "87e12
 #yew-nested-router = { path = "../yew-nested-router" }
 yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # awaiting release
 #yew-more-hooks = { path = "../yew-more-hooks" }
-popper-rs = { git = "https://github.com/ctron/popper-rs", rev = "460da6799da78bf5034ab090abd28e47ea76d001" }
+#popper-rs = { git = "https://github.com/ctron/popper-rs", rev = "460da6799da78bf5034ab090abd28e47ea76d001" }
