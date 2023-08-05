@@ -60,21 +60,27 @@ pub fn index() -> Html {
     html! {
       <>
         <Page title="NAS-T" {subtitle}>
-	<Stack gutter=true>
-	<Card>
-	<CardBody>{about}</CardBody>
-	<CardDivider/>
-	<CardBody>{motivation}</CardBody>
-	<CardDivider/>
-	<CardBody>{solution}</CardBody>
-	<CardDivider/>
-	<CardBody>{mission}</CardBody>
-	<CardDivider/>
-	<CardBody>{products}</CardBody>
-	<CardDivider/>
-	<CardBody>{services}</CardBody>
-	</Card>
-      </Stack>
+	<Grid gutter=true>
+	<GridItem cols={[10]}><Card><CardBody>{about}</CardBody></Card></GridItem>
+	<GridItem rows={[2]}>{""}</GridItem>
+	<GridItem rows={[2]}>{""}</GridItem>
+	<GridItem cols={[1]} rows={[3]}>{""}</GridItem>
+	<GridItem cols={[8]} rows={[3]}><Card><CardBody>{motivation}</CardBody></Card></GridItem>
+	<GridItem cols={[3]} rows={[3]}>{"TODO"}</GridItem>
+	<GridItem rows={[2]}>{""}</GridItem>
+	<GridItem cols={[1]} rows={[3]}>{""}</GridItem>
+	<GridItem cols={[8]} rows={[3]}><Card><CardBody>{solution}</CardBody></Card></GridItem>
+	<GridItem cols={[3]} rows={[3]}>{"TODO"}</GridItem>
+	<GridItem rows={[2]}>{""}</GridItem>
+	<GridItem cols={[12]} rows={[4]}>{""}</GridItem>
+	<GridItem cols={[2]} rows={[4]}>{"TODO"}</GridItem>
+	<GridItem cols={[8]} rows={[4]}><Card><CardBody>{mission}</CardBody></Card></GridItem>
+	<GridItem cols={[2]} rows={[4]}>{"TODO"}</GridItem>
+	<GridItem cols={[12]} rows={[2]}>{""}</GridItem>
+	<GridItem cols={[6]}><Card><CardBody>{products}</CardBody></Card></GridItem>
+	<GridItem cols={[6]}><Card><CardBody>{services}</CardBody></Card></GridItem>
+
+      </Grid>
       </Page>
         </>
     }

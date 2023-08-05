@@ -8,7 +8,7 @@ pub fn about() -> Html {
       <Bullseye
 	plain=true>
         <AboutModal
-//        background_image_src="nas-t-cloud-w.png"
+        background_image_src="circuit.svg"
         brand_image_src="logo.png"
         brand_image_alt="NAS-T logo"
         product_name="The NAS Technology Company"
