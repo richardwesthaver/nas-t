@@ -35,11 +35,3 @@ features = [
     "HtmlElement",
     "HtmlInputElement"
 ]
-
-[patch.crates-io]
-#patternfly-yew = { path = "../patternfly-yew" }
-patternfly-yew = { git = "https://github.com/ctron/patternfly-yew", rev = "87e121df7a44eab762c6cd29165a782af8ffe223" } # awaiting release
-#yew-nested-router = { path = "../yew-nested-router" }
-yew-more-hooks = { git = "https://github.com/ctron/yew-more-hooks", rev = "9f39517aabe25cfadae48f2d225daa1c3a608c20" } # awaiting release
-#yew-more-hooks = { path = "../yew-more-hooks" }
-popper-rs = { git = "https://github.com/ctron/popper-rs", rev = "460da6799da78bf5034ab090abd28e47ea76d001" }

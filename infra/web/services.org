@@ -1,0 +1,18 @@
+* Deployment
+We offer on-site deployment services for all customers within our
+service area. Our most prized asset is our relationships with
+community members and we have a passion for educating folks from all
+backgrounds in how to control and manage their personal data.
+* On-site Support
+Sometimes there's a solution, but it's tricky to implement. Other
+times it's just easier to call in the experts so you can focus on
+bigger things. Whatever the need, we're just a call or ping away.
+* Expert Support
+We provide a 1-on-1 support subscription with an expert which is
+available for a small monthly fee and includes the option to receive
+software updates and access to our beta environment where
+early-development features are available for you to experiment with.
+* Enterprise Support
+Our Enterprise Support package is for organizations who want to
+integrate NAS-T as a tool in their business. We provide consulting,
+in-house development, training, and maintenance services.

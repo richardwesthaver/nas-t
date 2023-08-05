@@ -3,7 +3,7 @@ use yew::prelude::*;
 use yew_nested_router::prelude::{Switch as RouterSwitch, *};
 use yew_nested_router::Target;
 use crate::{form::MessageText,
-	    index::*, about
+	    index::*, about::About,
 };
 
 #[hook]
@@ -25,9 +25,10 @@ pub enum AppRoute {
 //    #[target(rename = "fullpage")]
 //    FullPageExample(FullPage),
 //    Layout(Layout),
-    Contact,
-    #[default]
-    Index,
+  #[default]
+  Index,
+  About,
+  Contact,
 }
 
 #[function_component(App)]
@@ -45,8 +46,9 @@ pub fn app() -> Html {
 
 fn switch_app_route(target:AppRoute) -> Html {
   match target {
-    AppRoute::Contact => html!{<AppPage><MessageText/></AppPage>},
-    AppRoute::Index => html!{<AppPage><MessageText/></AppPage>},
+    AppRoute::Contact => html!{<AppPage><p /></AppPage>},
+    AppRoute::Index => html!{<AppPage><Index /></AppPage>},
+    AppRoute::About => html!{<AppPage><About /></AppPage>},
   }
 }
 
@@ -57,6 +59,11 @@ pub struct PageProps {
 
 #[function_component(AppPage)]
 fn page(props: &PageProps) -> Html {
+    let callback_lab = use_open(
+        "https://lab.rwest.io/comp/nas-t",
+        "_blank",
+    );
+
     let callback_github = use_open(
         "https://github.com/richardwesthaver/nas-t",
         "_blank",
@@ -66,7 +73,7 @@ fn page(props: &PageProps) -> Html {
 
     let onabout = Callback::from(move |_| {
         if let Some(backdropper) = &backdropper {
-            backdropper.open(html!(<about::About/>));
+            backdropper.open(html!(<About/>));
         }
     });
 
@@ -86,19 +93,21 @@ fn page(props: &PageProps) -> Html {
                         <patternfly_yew::prelude::Switch onchange={onthemeswitch} label="Dark Theme" />
                     </ToolbarItem>
                     <ToolbarItem>
+                        <Button variant={ButtonVariant::Plain} icon={Icon::Gitlab} onclick={callback_lab}/>
                         <Button variant={ButtonVariant::Plain} icon={Icon::Github} onclick={callback_github}/>
                     </ToolbarItem>
                     <ToolbarItem>
         <Button variant={ButtonVariant::Link} icon={Icon::InfoCircle} onclick={onabout}>{"About"}</Button>
-                    </ToolbarItem>
-                </ToolbarGroup>
-            </ToolbarContent>
+        </ToolbarItem>
+        </ToolbarGroup>
+        </ToolbarContent>
         </Toolbar>
     );
 
     html! (
         <Page {tools}>
             { for props.children.iter() }
+      <MessageText />
         </Page>
     )
 }

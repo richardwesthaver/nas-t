@@ -27,7 +27,7 @@ pub fn page(props: &Props) -> Html {
         <PageSectionGroup>
             <PageSection
                 r#type={PageSectionType::Default}
-                variant={PageSectionVariant::Light}
+                variant={PageSectionVariant::Dark}
                 limit_width=true
                 sticky={[PageSectionSticky::Top]}
             >
@@ -37,7 +37,7 @@ pub fn page(props: &Props) -> Html {
                     </Title>
                     { for props.subtitle.iter() }
                 </Content>
-            </PageSection>
+        </PageSection>
             { for props.children.iter().map(|child|{
                 html!(<PageSection>{child}</PageSection>)
             })}
@@ -48,18 +48,15 @@ pub fn page(props: &Props) -> Html {
 #[function_component(Index)]
 pub fn index() -> Html {
     let subtitle = Html::from_html_unchecked(
-        r#"<div>
-<p>
-This project acts both as a showcase for <strong>PatternFly Yew</strong>, as well as a quick-start project template.
-</p>
-</div>"#
-            .into(),
+      "<div><code>The NAS Technology Company</code></div>"
+        .into(),
     );
+  let content = Html::from_html_unchecked(crate::CONTENT.into());
     html! {
-        <>
-            <Page title="Patternfly Yew Quickstart" {subtitle}>
-                {"Pick an example on the left to learn more."}
-            </Page>
+      <>
+        <Page title="NAS-T" {subtitle}>
+      {content}
+      </Page>
         </>
     }
 }

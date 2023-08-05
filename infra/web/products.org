@@ -1,0 +1,63 @@
+* pitstop
+tiny NAS. The most convenient option for single users or small
+families.
+- raspberry pi kit
+- storage :: 2x 500GB-4TB HDD/80-1TB SSD = 8TB max
+- modular :: stack units and run in parallel, control with the homie
+* homie
+The secure, fast, private cloud NAS for the home and small businesses.
+- discrete home NAS chasis
+- storage :: 5x 500GB-10TB HDD/2TB SSD = 50TB max
+- p2p :: P2P sharing across the Internet with friends+family
+- modular :: variety of hardware options -- 4-128GB RAM, intel chip,
+  GPU optional
+* MPS
+The Media Production Server (MPS) line is designed for studios across
+all disciplines in digital media. In this market we expect to compete
+with other custom hardware solutions designed as a traditional NAS,
+since large volumes of media data need to be stored and made available
+to workstations and it is a good solution for high-throughput media
+shops. We take things a step further with our software designed
+specifically for media workflows and our custom hardware offerings.
+** MPS-1
+The one-man production workhorse.
+- audio/video streaming
+- library management
+- rackmount/wheel extensions
+- 2x GPU
+- PCIe
+- 16-256GB RAM
+** MPS-2
+Professional grade, media-optimized NAS.
+- modular A/V IO hardware
+- 2x Intel/AMD cpu
+- 4x GPU
+- 64-512GB RAM
+** MPS-X
+Fully custom media solution.
+** DPS
+The Data Production System (DPS) is the goto when high-throughput and
+availability is a must. These units are built to support office spaces
+of all sizes and scale up to the largest of corporate networks. Each
+DPS is unique, and consists of a DPS unit communicating with any
+number of DPN units.
+*** DPN
+Data Production Node. 
+- lightweight
+- optimized for scalability
+- DPS signal boost, caching, and edge compute
+*** DPS-1
+Data Production Server (DPS) 1.
+- the production-grade private cloud data solution. 
+- 2x ATX
+- 4x CPU
+- 4x GPU
+*** DPS-2
+Data Production Server (DPS) 2.
+- the lab-grade private cloud data solution.
+- 2x ATX
+- 4x CPU
+- 4x GPU
+*** DPS-X
+Fully custom datacenter-grade solution.
+
