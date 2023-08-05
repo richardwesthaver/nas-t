@@ -1,0 +1,34 @@
+#+TITLE: style
+
+* Overview
+This directory contains design elements and guidelines for frontend
+applications, documents, and other types of media.
+* Scripts
+** [2023-08-05 Sat] logo-gen
+:PROPERTIES:
+:REQUIRES: goat
+:END:
+#+begin_src sh :results silent
+  # ascii -> svg
+  goat -i logo -o images/logo.svg
+#+end_src
+** [2023-08-05 Sat] favicon-gen
+:PROPERTIES:
+:REQUIRES: goat
+:END:
+#+begin_src sh :results silent
+  # ascii -> svg
+  goat -i favicon -o images/favicon.svg
+#+end_src
+** [2023-08-05 Sat] favicon-convert
+:PROPERTIES:
+:REQUIRES: imagemagick
+:END:
+#+begin_src sh :results silent
+  # svg -> favicon
+  convert images/favicon.svg  -bordercolor red -border 1 \
+        \( -clone 0 -resize 16x16 \) \
+        \( -clone 0 -resize 32x32 \) \
+        \( -clone 0 -resize 64x64 \) \
+        -delete 0 -alpha off -colors 256 -negate images/favicon.ico
+#+end_src

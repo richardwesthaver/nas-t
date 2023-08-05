@@ -1,0 +1,73 @@
+<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='105' width='384' font-family='Menlo,Lucida Console,monospace'>
+<style type="text/css">
+svg {
+   color: #000000;
+}
+@media (prefers-color-scheme: dark) {
+   svg {
+      color: #FFFFFF;
+   }
+}
+</style>
+<g transform='translate(8,16)'>
+<path d='M 4,8 L 60,8' fill='none' stroke='currentColor'></path>
+<path d='M 108,8 L 148,8' fill='none' stroke='currentColor'></path>
+<path d='M 180,8 L 252,8' fill='none' stroke='currentColor'></path>
+<path d='M 312,8 L 368,8' fill='none' stroke='currentColor'></path>
+<path d='M 124,24 L 136,24' fill='none' stroke='currentColor'></path>
+<path d='M 208,24 L 244,24' fill='none' stroke='currentColor'></path>
+<path d='M 312,24 L 328,24' fill='none' stroke='currentColor'></path>
+<path d='M 352,24 L 368,24' fill='none' stroke='currentColor'></path>
+<path d='M 116,40 L 136,40' fill='none' stroke='currentColor'></path>
+<path d='M 180,40 L 216,40' fill='none' stroke='currentColor'></path>
+<path d='M 276,40 L 316,40' fill='none' stroke='currentColor'></path>
+<path d='M 268,56 L 300,56' fill='none' stroke='currentColor'></path>
+<path d='M 4,72 L 40,72' fill='none' stroke='currentColor'></path>
+<path d='M 40,72 L 60,72' fill='none' stroke='currentColor'></path>
+<path d='M 92,72 L 128,72' fill='none' stroke='currentColor'></path>
+<path d='M 128,72 L 148,72' fill='none' stroke='currentColor'></path>
+<path d='M 164,72 L 228,72' fill='none' stroke='currentColor'></path>
+<path d='M 328,72 L 352,72' fill='none' stroke='currentColor'></path>
+<path d='M 40,32 L 40,64' fill='none' stroke='currentColor'></path>
+<path d='M 128,48 L 128,64' fill='none' stroke='currentColor'></path>
+<path d='M 312,8 L 312,24' fill='none' stroke='currentColor'></path>
+<path d='M 328,32 L 328,64' fill='none' stroke='currentColor'></path>
+<path d='M 352,32 L 352,64' fill='none' stroke='currentColor'></path>
+<path d='M 368,8 L 368,24' fill='none' stroke='currentColor'></path>
+<path d='M -4,56 L 12,24' fill='none' stroke='currentColor'></path>
+<path d='M 72,80 L 108,8' fill='none' stroke='currentColor'></path>
+<path d='M 112,48 L 128,16' fill='none' stroke='currentColor'></path>
+<path d='M 172,24 L 180,8' fill='none' stroke='currentColor'></path>
+<path d='M 160,80 L 180,40' fill='none' stroke='currentColor'></path>
+<path d='M 244,24 L 252,8' fill='none' stroke='currentColor'></path>
+<path d='M 240,80 L 252,56' fill='none' stroke='currentColor'></path>
+<path d='M 264,64 L 276,40' fill='none' stroke='currentColor'></path>
+<path d='M 300,56 L 308,40' fill='none' stroke='currentColor'></path>
+<path d='M -4,56 L 4,72' fill='none' stroke='currentColor'></path>
+<path d='M 0,0 L 12,24' fill='none' stroke='currentColor'></path>
+<path d='M 60,72 L 68,88' fill='none' stroke='currentColor'></path>
+<path d='M 60,8 L 92,72' fill='none' stroke='currentColor'></path>
+<path d='M 148,72 L 156,88' fill='none' stroke='currentColor'></path>
+<path d='M 132,24 L 140,40' fill='none' stroke='currentColor'></path>
+<path d='M 148,8 L 172,56' fill='none' stroke='currentColor'></path>
+<path d='M 172,24 L 180,40' fill='none' stroke='currentColor'></path>
+<path d='M 228,72 L 236,88' fill='none' stroke='currentColor'></path>
+<path d='M 236,24 L 252,56' fill='none' stroke='currentColor'></path>
+<path d='M 40,64 L 40,72' fill='none' stroke='currentColor'></path>
+<path d='M 128,64 L 128,72' fill='none' stroke='currentColor'></path>
+<path d='M 312,8 L 312,16' fill='none' stroke='currentColor'></path>
+<path d='M 328,24 L 328,32' fill='none' stroke='currentColor'></path>
+<path d='M 328,64 L 328,72' fill='none' stroke='currentColor'></path>
+<path d='M 352,24 L 352,32' fill='none' stroke='currentColor'></path>
+<path d='M 352,64 L 352,72' fill='none' stroke='currentColor'></path>
+<path d='M 368,8 L 368,16' fill='none' stroke='currentColor'></path>
+<style>
+  text {
+       text-anchor: middle;
+       font-family: "Menlo","Lucida Console","monospace";
+       fill: currentColor;
+       font-size: 1em;
+  }
+</style>
+</g>
+</svg>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2023-08-05 Sat 13:24 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>notes</title>
+<meta name="author" content="ellis" />
+<meta name="generator" content="Org Mode" />
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">notes</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org2c3b240">1. BTRFS</a></li>
+<li><a href="#org19f8a4f">2. Refs</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org2c3b240" class="outline-2">
+<h2 id="org2c3b240"><span class="section-number-2">1.</span> BTRFS</h2>
+<div class="outline-text-2" id="text-1">
+<blockquote>
+<p>
+BTRFS is a Linux filesystem based on copy-on-write, allowing for
+efficient snapshots and clones.
+</p>
+
+<p>
+It uses B-trees as its main on-disk data structure. The design goal is
+to work well for many use cases and workloads. To this end, much
+effort has been directed to maintaining even performance as the
+filesystem ages, rather than trying to support a particular narrow
+benchmark use-case.
+</p>
+
+<p>
+Linux filesystems are installed on smartphones as well as enterprise
+servers. This entails challenges on many different fronts.
+</p>
+
+<dl class="org-dl">
+<dt>Scalability</dt><dd>The filesystem must scale in many dimensions: disk
+space, memory, and CPUs.</dd>
+
+<dt>Data integrity</dt><dd>Losing data is not an option, and much effort is
+expended to safeguard the content. This includes checksums, metadata
+duplication, and RAID support built into the filesystem.</dd>
+
+<dt>Disk diversity</dt><dd>The system should work well with SSDs and hard
+disks. It is also expected to be able to use an array of different
+sized disks, which poses challenges to the RAID and striping
+mechanisms.</dd>
+</dl>
+</blockquote>
+<p>
+&#x2013; Rodeh, Bacik, and Mason (<a href="#citeproc_bib_item_1">2013</a>)
+</p>
+</div>
+</div>
+<div id="outline-container-org19f8a4f" class="outline-2">
+<h2 id="org19f8a4f"><span class="section-number-2">2.</span> Refs</h2>
+<div class="outline-text-2" id="text-2">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Rodeh, Ohad, Josef Bacik, and Chris Mason. 2013. “Btrfs: The Linux B-Tree Filesystem.” <i>Acm Transactions on Storage (Tos)</i> 9. <a href="https://doi.org/10.1145/2501620.2501623">https://doi.org/10.1145/2501620.2501623</a>.</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<footer><div><p>created ;<br>updated 2023-08-05 Sat 13:24;</p></div></footer>
+</div>
+</body>
+</html>
