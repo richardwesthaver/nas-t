@@ -5,7 +5,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:sxp :organ :log4cl)
+  :depends-on (:macs :sxp :organ)
   :in-order-to ((test-op (test-op "nas-t/tests")))
   :components ((:module "src"
 		:components ((:file "pkg")
