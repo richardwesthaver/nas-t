@@ -24,18 +24,6 @@ find_make() {
   echo "//MAKE=\"$MAKE\""
 }
 
-find_hg() {
-    if [ -x "`command -v hg`" ]; then
-	echo "hg: OK"
-	HG=hg
-    else
-	echo "Mercurial not found. Try setting env var HG or install"
-	exit 1
-    fi
-    export HG
-    echo "//HG=\"$HG\""    
-}
-
 find_sbcl() {
     if [ -x "`command -v sbcl`" ]; then
 	echo "sbcl: OK"
@@ -60,28 +48,17 @@ find_cargo() {
     echo "//CARGO=\"$CARGO\""
 }
 
-find_trunk() {
-    if [ -x "`command -v trunk`" ]; then
-	echo "trunk: OK"
-	TRUNK=trunk
+### DEV
+find_hg() {
+    if [ -x "`command -v hg`" ]; then
+	echo "hg: OK"
+	HG=hg
     else
-	echo "Trunk not found. Try setting env var TRUNK or install with 'cargo install trunk'"
+	echo "Mercurial not found. Try setting env var HG or install"
 	exit 1
     fi
-    export TRUNK
-    echo "//TRUNK=\"$TRUNK\""
-}
-
-find_wasm_opt() {
-    if [ -x "`command -v wasm-opt`" ]; then
-	echo "wasm-opt: OK"
-	WASM_OPT=wasm-opt
-    else
-	echo "wasm-opt not found. Try setting env var WASM_OPT or install with 'cargo install wasm-opt'"
-	exit 1
-    fi
-    export WASM_OPT
-    echo "//WASM_OPT=\"$WASM_OPT\""
+    export HG
+    echo "//HG=\"$HG\""    
 }
 
 find_emacs() {
@@ -97,21 +74,22 @@ find_emacs() {
 	exit 1
     fi
     export EMACS
-    export EMACSCLIENT
     echo "//EMACS=\"$EMACS\""
+    export EMACSCLIENT
     echo "//EMACSCLIENT=\"$EMACSCLIENT\""
 }
 
-find_podman() {
-    if [ -x "`command -v podman`" ]; then
-	echo "podman: OK"
-	PODMAN=podman
+####  dev/web
+find_trunk() {
+    if [ -x "`command -v trunk`" ]; then
+	echo "trunk: OK"
+	TRUNK=trunk
     else
-	echo "Podman not found. Try setting env var PODMAN or install"
+	echo "Trunk not found. Try setting env var TRUNK or install with 'cargo install trunk'"
 	exit 1
     fi
-    export PODMAN
-    echo "//PODMAN=\"$PODMAN\""
+    export TRUNK
+    echo "//TRUNK=\"$TRUNK\""
 }
 
 find_npm() {
@@ -126,13 +104,44 @@ find_npm() {
     echo "//NPM=\"$NPM\""
 }
 
-find_all() {
+find_wasm_opt() {
+    if [ -x "`command -v wasm-opt`" ]; then
+	echo "wasm-opt: OK"
+	WASM_OPT=wasm-opt
+    else
+	echo "wasm-opt not found. Try setting env var WASM_OPT or install with 'cargo install wasm-opt'"
+	exit 1
+    fi
+    export WASM_OPT
+    echo "//WASM_OPT=\"$WASM_OPT\""
+}
+
+#### dev/virt
+find_podman() {
+    if [ -x "`command -v podman`" ]; then
+	echo "podman: OK"
+	PODMAN=podman
+    else
+	echo "Podman not found. Try setting env var PODMAN or install"
+	exit 1
+    fi
+    export PODMAN
+    echo "//PODMAN=\"$PODMAN\""
+}
+
+find_deps() {
     find_make
-    find_hg
     find_sbcl
     find_cargo
-    find_trunk
-    find_wasm_opt
+}
+find_all_deps() {
+    find_deps
+    find_hg
     find_emacs
+    find_trunk
+    find_npm
+    find_wasm_opt
     find_podman
 }
+
+$*
