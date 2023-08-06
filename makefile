@@ -4,6 +4,7 @@
 ## POD_NAME --- name for podman pod
 ## POD_IMAGE_BASE --- base image for podman containers
 include infra/common.mk
+
 ROOT?=0
 EMACS?=emacsclient -n
 POD_NAME?=nas-t-pod
@@ -13,17 +14,21 @@ lp1=--eval '(require :sb-sprof)' --eval '(sb-sprof:start-profiling :sample-inter
 lp2=--eval '(sb-sprof:stop-profiling)' --eval '(sb-sprof:report)'
 L?=sbcl --noinform --non-interactive $(ll) 
 E?=$(EMACS)
+
 ifeq ($(ROOT),1)
 PM=sudo podman
 else
 PM=podman
 endif
-all:compile install
-.PHONY:podman-init podman-ps hg-yolo
-compile:;$(L) --eval '(asdf:compile-system :nas-t)'
-install:;
-clean:;rm -rf */*.fasl
+
+all::compile install
+.PHONY::podman-init podman-ps hg-yolo
+
+compile::;$(L) --eval '(asdf:compile-system :nas-t)'
+test::tests/pkg.lisp;$(L) --eval '(asdf:test-system :nas-t)'
+install::;$(L) --eval '(asdf:make :nas-t)'
+clean::;rm -rf */*.fasl
+
 podman-init:;$(PM) pod create --name $(POD_NAME)
 podman-ps:;$(PM) ps -a --pod
-# babel dependency
-hg-yolo:;hg commit -A -m make-hg-yolo-$(date);hg push;hg-fast-export.sh
+hg-yolo:;hg commit -A -m make-hg-yolo-$(date);hg push;hg-fast-export.sh # babel dependency

@@ -5,7 +5,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:macs :sxp :organ)
+  :depends-on (:macs :sxp)
   :in-order-to ((test-op (test-op "nas-t/tests")))
   :components ((:module "src"
 		:components ((:file "pkg")
@@ -30,7 +30,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on(:nas-t)
+  :depends-on(:nas-t :organ)
   :components ((:module "docs"
 		:components ((:file "pkg")))))
 
@@ -40,8 +40,8 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:nas-t)
+  :depends-on (:nas-t :sb-rt)
   :components ((:module "tests"
 		:components ((:file "pkg"))))
   ;; TODO 2023-08-01: sb-rt
-  :perform (test-op (op c) (uiop:symbol-call '#:nas-t.tests '#:run-tests)))
+  :perform (test-op (op c) (uiop:symbol-call '#:nas-t.tests '#:run-all-tests)))
