@@ -19,7 +19,7 @@ file and [[mailto:ellis@rwest.io][email me]] your patch or idea.
   Greetings stranger. My name is Richard Westhaver and I'm a computer
   programmer living in Connecticut. I started this company as a means
   to provide high-quality NAS solutions to my local community and
-  encourage others to do the sam. There is much work to be done but
+  empower others to do the same. There is much work to be done but
   it's quite exciting, and I hope you will be along for the ride :).
 
   Right now, the ideas are flowing and I'm working through a list of

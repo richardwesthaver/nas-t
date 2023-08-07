@@ -1,5 +1,5 @@
 #+TITLE: notes
-#+BIBLIOGRAPHY: notes.bib
+#+BIBLIOGRAPHY: refs.bib
 * File Systems
 ** BTRFS
 #+begin_quote
@@ -39,10 +39,74 @@ servers. This entails challenges on many different fronts.
 -- [cite/t/f:@ext4]
 * Storage Mediums
 ** HDD
+-- [cite/t/f:@hd-failure-ml]
 ** SSD
+-- [cite/t/f:@smart-ssd-qp]
+-- [cite/t/f:@ssd-perf-opt]
+
 ** Flash
+-- [cite/t/f:@flash-openssd-systems]
 ** NVMe
 -- [cite/t/f:@nvme-ssd-ux]
 ** eMMC
+-- [cite/t/f:@emmc-mobile-io]
+* Linux
+** syscalls
+*** ioctl
+- [[https://elixir.bootlin.com/linux/latest/source/Documentation/userspace-api/ioctl/ioctl-number.rst][ioctl-numbers]]
+* Rust
+** crates
+*** nix
+- [[https://crates.io/crates/nix][crates.io]]
+*** memmap2
+- [[https://crates.io/crates/memmap2][crates.io]]
+*** zstd
+- [[https://crates.io/crates/zstd][crates.io]]
+*** rocksdb
+- [[https://crates.io/crates/rocksdb][crates.io]]
+*** tokio                                                           :tokio:
+- [[https://crates.io/crates/tokio][crates.io]]
+*** tracing                                                         :tokio:
+- [[https://crates.io/crates/tracing][crates.io]]
+**** tracing-subscriber
+- [[https://crates.io/crates/tracing-subscriber][crates.io]]
+*** axum                                                            :tokio:
+- [[https://crates.io/crates/axum][crates.io]]
+*** tower                                                           :tokio:
+- [[https://crates.io/crates/tower][crates.io]]
+*** uuid
+- [[https://crates.io/crates/uuid][crates.io]]
+** unstable
+*** lazy_cell
+- [[https://github.com/rust-lang/rust/issues/109736][tracking-issue]]
+*** {BTreeMap,BTreeSet}::extract_if
+- [[https://github.com/rust-lang/rust/issues/70530][tracking-issue]]
+* Lisp
+** ASDF
+- [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
+- [[https://asdf.common-lisp.dev/][common-lisp.dev]]
+- [[https://github.com/fare/asdf/blob/master/doc/best_practices.md][best-practices]]
+- includes UIOP
+** Reference Projects
+*** StumpWM
+- [[https://github.com/stumpwm/stumpwm][github]]
+*** Nyxt
+- [[https://github.com/atlas-engineer/nyxt][github]]
+*** Kons-9
+- [[https://github.com/kaveh808/kons-9][github]]
+*** cl-torrents
+- [[https://github.com/vindarel/cl-torrents][github]]
+*** Mezzano
+- [[https://github.com/froggey/Mezzano][github]]
+*** yalo
+- [[https://github.com/whily/yalo][github]]
+*** cl-ledger
+- [[https://github.com/ledger/cl-ledger][github]]
+*** Lem
+- [[https://github.com/lem-project/lem][github]]
+*** kindista
+- [[https://github.com/kindista/kindista][github]]
+*** lisp-chat
+- [[https://github.com/ryukinix/lisp-chat][github]]
 * Refs
 #+print_bibliography:

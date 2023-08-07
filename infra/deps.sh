@@ -25,123 +25,123 @@ find_make() {
 }
 
 find_sbcl() {
-    if [ -x "`command -v sbcl`" ]; then
-	echo "sbcl: OK"
-	SBCL=sbcl
-    else
-	echo "SBCL not found. Try setting env var SBCL or install"
-	exit 1
-    fi
-    export SBCL
-    echo "//SBCL=\"$SBCL\""    
+  if [ -x "`command -v sbcl`" ]; then
+    echo "sbcl: OK"
+    SBCL=sbcl
+  else
+    echo "SBCL not found. Try setting env var SBCL or install"
+    exit 1
+  fi
+  export SBCL
+  echo "//SBCL=\"$SBCL\""    
 }
 
 find_cargo() {
-    if [ -x "`command -v cargo`" ]; then
-	echo "cargo: OK"
-	CARGO=cargo
-    else
-	echo "Cargo not found. Try setting env var CARGO or install from rustup"
-	exit 1
-    fi
-    export CARGO
-    echo "//CARGO=\"$CARGO\""
+  if [ -x "`command -v cargo`" ]; then
+    echo "cargo: OK"
+    CARGO=cargo
+  else
+    echo "Cargo not found. Try setting env var CARGO or install from rustup"
+    exit 1
+  fi
+  export CARGO
+  echo "//CARGO=\"$CARGO\""
 }
 
 ### DEV
 find_hg() {
-    if [ -x "`command -v hg`" ]; then
-	echo "hg: OK"
-	HG=hg
-    else
-	echo "Mercurial not found. Try setting env var HG or install"
-	exit 1
-    fi
-    export HG
-    echo "//HG=\"$HG\""    
+  if [ -x "`command -v hg`" ]; then
+    echo "hg: OK"
+    HG=hg
+  else
+    echo "Mercurial not found. Try setting env var HG or install"
+    exit 1
+  fi
+  export HG
+  echo "//HG=\"$HG\""    
 }
 
 find_emacs() {
-    if [ -x "`command -v emacs`" ]; then
-	echo "emacs: OK"
-	EMACS=emacs
-	if [ -x "`command -v emacsclient`" ]; then
-	    echo "emacsclient: OK"
-	    EMACSCLIENT=emacsclient
-	fi
-    else
-	echo "Emacs not found. Try setting env var EMACS & EMACSCLIENT or install"
-	exit 1
+  if [ -x "`command -v emacs`" ]; then
+    echo "emacs: OK"
+    EMACS=emacs
+    if [ -x "`command -v emacsclient`" ]; then
+      echo "emacsclient: OK"
+      EMACSCLIENT=emacsclient
     fi
-    export EMACS
-    echo "//EMACS=\"$EMACS\""
-    export EMACSCLIENT
-    echo "//EMACSCLIENT=\"$EMACSCLIENT\""
+  else
+    echo "Emacs not found. Try setting env var EMACS & EMACSCLIENT or install"
+    exit 1
+  fi
+  export EMACS
+  echo "//EMACS=\"$EMACS\""
+  export EMACSCLIENT
+  echo "//EMACSCLIENT=\"$EMACSCLIENT\""
 }
 
 ####  dev/web
 find_trunk() {
-    if [ -x "`command -v trunk`" ]; then
-	echo "trunk: OK"
-	TRUNK=trunk
-    else
-	echo "Trunk not found. Try setting env var TRUNK or install with 'cargo install trunk'"
-	exit 1
-    fi
-    export TRUNK
-    echo "//TRUNK=\"$TRUNK\""
+  if [ -x "`command -v trunk`" ]; then
+    echo "trunk: OK"
+    TRUNK=trunk
+  else
+    echo "Trunk not found. Try setting env var TRUNK or install with 'cargo install trunk'"
+    exit 1
+  fi
+  export TRUNK
+  echo "//TRUNK=\"$TRUNK\""
 }
 
 find_npm() {
-    if [ -x "`command -v npm`" ]; then
-	echo "npm: OK"
-	NPM=npm
-    else
-	echo "NPM not found. Try setting env var NPM or install Node.js"
-	exit 1
-    fi
-    export NPM
-    echo "//NPM=\"$NPM\""
+  if [ -x "`command -v npm`" ]; then
+    echo "npm: OK"
+    NPM=npm
+  else
+    echo "NPM not found. Try setting env var NPM or install Node.js"
+    exit 1
+  fi
+  export NPM
+  echo "//NPM=\"$NPM\""
 }
 
 find_wasm_opt() {
-    if [ -x "`command -v wasm-opt`" ]; then
-	echo "wasm-opt: OK"
-	WASM_OPT=wasm-opt
-    else
-	echo "wasm-opt not found. Try setting env var WASM_OPT or install with 'cargo install wasm-opt'"
-	exit 1
-    fi
-    export WASM_OPT
-    echo "//WASM_OPT=\"$WASM_OPT\""
+  if [ -x "`command -v wasm-opt`" ]; then
+    echo "wasm-opt: OK"
+    WASM_OPT=wasm-opt
+  else
+    echo "wasm-opt not found. Try setting env var WASM_OPT or install with 'cargo install wasm-opt'"
+    exit 1
+  fi
+  export WASM_OPT
+  echo "//WASM_OPT=\"$WASM_OPT\""
 }
 
 #### dev/virt
 find_podman() {
-    if [ -x "`command -v podman`" ]; then
-	echo "podman: OK"
-	PODMAN=podman
-    else
-	echo "Podman not found. Try setting env var PODMAN or install"
-	exit 1
-    fi
-    export PODMAN
-    echo "//PODMAN=\"$PODMAN\""
+  if [ -x "`command -v podman`" ]; then
+    echo "podman: OK"
+    PODMAN=podman
+  else
+    echo "Podman not found. Try setting env var PODMAN or install"
+    exit 1
+  fi
+  export PODMAN
+  echo "//PODMAN=\"$PODMAN\""
 }
 
 find_deps() {
-    find_make
-    find_sbcl
-    find_cargo
+  find_make
+  find_sbcl
+  find_cargo
 }
 find_all_deps() {
-    find_deps
-    find_hg
-    find_emacs
-    find_trunk
-    find_npm
-    find_wasm_opt
-    find_podman
+  find_deps
+  find_hg
+  find_emacs
+  find_trunk
+  find_npm
+  find_wasm_opt
+  find_podman
 }
 
 $*
