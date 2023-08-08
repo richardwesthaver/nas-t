@@ -1,4 +1,4 @@
-.*[.](fasl|lock|elc|eln)$
+.*[.](fasl|lock|elc|eln|scratch)$
 .*(target|dist|node_modules|target-trunk)/.*
 .*Cargo.lock$
-^scratch/.*
+.*/(scratch|stash)/.*$

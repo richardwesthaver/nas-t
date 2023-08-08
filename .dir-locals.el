@@ -1,3 +1,4 @@
+;; need a wrapper to start emacs with dir-locals enabled automatically
 ((nil . ((indent-tabs-mode . nil)
 	 (fill-column . 88)
 	 (project-vc-ignores . ("./scratch"))))

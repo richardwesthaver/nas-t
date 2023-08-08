@@ -6,10 +6,11 @@
 #+INFOJS_OPT: view:info toc:nil
 * Overview
 This is the open-source codebase of The NAS Technology Company
-([[https://nas-t.net][NAS-T]]). Development is done at [[https://lab.rwest.io/comp/startup/nas-t][lab.rwest.io/comp/startup/nas-t]] and
-mirrored on [[https://github.com/richardwesthaver/nas-t][github]].
+([[https://nas-t.net][NAS-T]]).
 - STATUS :: ALPHA
 - LICENSE :: [[file:LICENSE][MPL]]
+- FORGE :: [[https://lab.rwest.io/comp/nas-t][Heptapod]]
+- MIRROR :: [[https://github.com/richardwesthaver/nas-t][Github]]
 ** Introduction
 Welcome to the NAS-T codebase. For more about The NAS Technology
 Company refer to the [[file:ABOUT][ABOUT]] file. To contribute, review the [[file:HACKING][HACKING]]

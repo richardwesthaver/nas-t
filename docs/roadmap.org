@@ -1,6 +1,6 @@
 #+TITLE: roadmap
 * 0.1.0 [0/3]                                                       :current:
-** TODO MVP [1/6]
+** TODO MVP [1/7]
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:14]
 :END:
@@ -23,12 +23,6 @@ capabilities for submitting inquiries/comments.
 - State "TODO"       from              [2023-08-01 Tue 19:23]
 :END:
 SPA
-- index
-- about
-- software
-- community
-- products?
-- services?
 ***** TODO styles                                                 :style:
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:19]
@@ -39,6 +33,13 @@ pretty. Design in modular fashion.
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:22]
 :END:
+- [X] index
+- [X] about
+- [X] contact
+  - [ ] >ty
+- [X] page
+- [X] app
+- [ ] err
 ***** TODO hooks
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:22]
@@ -47,7 +48,7 @@ pretty. Design in modular fashion.
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:30]
 :END:
-**** TODO server [1/2]                                            :server:
+**** TODO server [0/2]                                            :server:
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:22]
 :END:
@@ -55,20 +56,22 @@ pretty. Design in modular fashion.
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:29]
 :END:
-- POST string (validated email)
+- form submit
+  - email
+  - name
+  - message
 - return status
-***** DONE errors
+***** TODO errors
 :LOGBOOK:
-- State "DONE"       from "TODO"       [2023-08-05 Sat 13:01]
 - State "TODO"       from              [2023-08-01 Tue 19:32]
 :END:
 - basic scaffolding
-- impl IntoResponse
-*** TODO nas-t daemon                                              :design:
+- [ ] impl IntoResponse
+*** TODO daemon                                                    :design:
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:33]
 :END:
-*** TODO nas-t protocol                                            :design:
+*** TODO protocol                                                  :design:
 :LOGBOOK:
 - State "TODO"       from              [2023-08-01 Tue 19:34]
 :END:
@@ -100,3 +103,4 @@ pretty. Design in modular fashion.
   - optimize linux kernel/dist
 - infra/releng infra/deploy
 - no accessories, ssh access only (or display port based on soc)
+* 0.2.0 [0/1]                                                          :next:
