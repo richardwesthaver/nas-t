@@ -28,7 +28,7 @@ servers. This entails challenges on many different fronts.
   mechanisms.
 #+end_quote
 -- [cite/t/f:@btrfs]
-- [2023-08-08 Tue] btrfs performance speculation ::
+*** [2023-08-08 Tue] btrfs performance speculation ::
   - [[https://www.percona.com/blog/taking-a-look-at-btrfs-for-mysql/]]
     - zfs outperforms immensely, but potential misconfiguration on btrfs side (virt+cow
       still enabled?)
@@ -132,6 +132,11 @@ servers. This entails challenges on many different fronts.
 - data: type,length,raw data
 - the v2 protocol supports the encoded commands
 - the commands are kinda clunky - need to MKFIL/MKDIR then RENAM to create
+*** [2023-08-09 Wed] ioctls
+- magic#: 0x94 
+  - https://docs.kernel.org/userspace-api/ioctl/ioctl-number.html
+  - Btrfs filesystem some lifted to vfs/generic
+  - fs/btrfs/ioctl.h and linux/fs.h
 ** ZFS
 -- [cite/t/f:@zfs]
 
