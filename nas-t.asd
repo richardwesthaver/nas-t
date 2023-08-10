@@ -9,9 +9,13 @@
   :in-order-to ((test-op (test-op "nas-t/tests")))
   :components ((:module "src"
 		:components ((:file "pkg")
-			     (:module "core")
-			     (:module "proto")
-			     (:module "platform")))))
+			     (:module "proto"
+                              :components ((:file "crypto")
+                                           (:file "endpoint")
+                                           (:file "message")
+                                           (:file "query")
+                                           (:file "token")
+                                           (:file "transport")))))))
 
 (defsystem "nas-t/infra"
   :version "0.1.0"
