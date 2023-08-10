@@ -2,7 +2,7 @@
 
 * Overview
 This directory contains design elements and guidelines for frontend
-applications, documents, and other types of media.
+applications, documents, and other types of media shipped by NAS-T.
 * Scripts
 ** [2023-08-05 Sat] logo-gen
 :PROPERTIES:
