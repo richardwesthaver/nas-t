@@ -1,6 +1,7 @@
-(defpackage nas-t.core
-  (:use :cl))
+;;; pkg.lisp --- NAS-T package definitions
+(defpackage nas-t.utils
+  (:use :cl :macs :sxp))
 (defpackage nas-t.proto
-  (:use :cl :macs :sxp :nas-t.core))
+  (:use :cl :nas-t.utils))
 (defpackage nas-t
-  (:use :cl :macs :sxp :nas-t.core :nas-t.proto))
+  (:use :cl :nas-t.utils :nas-t.proto))

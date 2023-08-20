@@ -6,19 +6,25 @@
 include infra/common.mk
 
 ROOT?=0
+DEBUG?=0
 EMACS?=emacsclient -n
 POD_NAME?=nas-t-pod
 POD_IMAGE_BASE?=docker.io/library/archlinux:latest
-ll=--eval '(asdf:load-asd "nas-t.asd")' --eval '(ql:quickload :nas-t)'
+ll1=--eval '(asdf:load-asd "btrfs.asd")' --eval '(ql:quickload :btrfs)'
+ll2=--eval '(asdf:load-asd "nas-t.asd")' --eval '(ql:quickload :nas-t)'
 lp1=--eval '(require :sb-sprof)' --eval '(sb-sprof:start-profiling :sample-interval 0.001)'
 lp2=--eval '(sb-sprof:stop-profiling)' --eval '(sb-sprof:report)'
-L?=sbcl --noinform --non-interactive $(ll) 
 E?=$(EMACS)
 
+PM:=podman
 ifeq ($(ROOT),1)
-PM=sudo podman
+PM=sudo $(PM)
+endif
+
+ifeq ($(DEBUG),1)
+L=sbcl --noinform --non-interactive $(ll1) $(ll2)
 else
-PM=podman
+L=sbcl --noinform --non-interactive $(ll2)
 endif
 
 all::compile install

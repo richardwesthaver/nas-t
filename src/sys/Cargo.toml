@@ -1,0 +1,9 @@
+[package]
+name = "sys"
+version = "0.1.0"
+edition = "2021"
+[lib]
+path = "lib.rs"
+[dependencies]
+btrfs-sys = { version = "0.1.0", path = "btrfs" }
+btrfsutil-sys = { version = "0.1.0", path = "btrfsutil" }

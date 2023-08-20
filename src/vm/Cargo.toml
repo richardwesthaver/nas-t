@@ -1,0 +1,11 @@
+[package]
+name = "vm"
+version = "0.1.0"
+edition = "2021"
+[[bin]]
+name = "nk1"
+path = "src/main.rs"
+[dependencies]
+bitflags = "2.4.0"
+nix = "0.26.2"
+openat = "0.1.21"

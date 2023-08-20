@@ -1,11 +1,11 @@
-;; nas-t.asd --- NAS-T SYSTEMS
+;;; nas-t.asd --- NAS-T SYSTEMS
 (defsystem "nas-t"
   :version "0.1.0"
   :license (:file "LICENSE")
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:macs :sxp)
+  :depends-on (:cl-ppcre :macs :sxp)
   :in-order-to ((test-op (test-op "nas-t/tests")))
   :components ((:module "src"
 		:components ((:file "pkg")
@@ -15,7 +15,10 @@
                                            (:file "message")
                                            (:file "query")
                                            (:file "token")
-                                           (:file "transport")))))))
+                                           (:file "transport")))
+                             (:module "client")
+                             (:module "util"
+                                      :components ((:file "macs")))))))
 
 (defsystem "nas-t/infra"
   :version "0.1.0"
@@ -47,5 +50,4 @@
   :depends-on (:nas-t :sb-rt)
   :components ((:module "tests"
 		:components ((:file "pkg"))))
-  ;; TODO 2023-08-01: sb-rt
   :perform (test-op (op c) (uiop:symbol-call '#:nas-t.tests '#:run-all-tests)))

@@ -1,5 +1,3 @@
-HACKING --- code notes and hacker quickstart
-
 STYLE:
   space=2, line=88, kebab-case
   ~1024 line max for single-file mods
