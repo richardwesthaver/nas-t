@@ -8,4 +8,8 @@
 /* #include <btrfs/send.h> */
 /* #include <btrfs/send-stream.h> */
 /* #include <btrfs/send-utils.h> */
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <sys/time.h>
 #include <btrfsutil.h>

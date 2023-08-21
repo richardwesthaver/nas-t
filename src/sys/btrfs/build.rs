@@ -13,6 +13,6 @@ fn main() {
     .generate()
     .expect("Unable to generate bindings");
   bindings
-    .write_to_file("bindings.rs")
+    .write_to_file(format!("{}/{}", std::env::var("OUT_DIR").unwrap(), "bindings.rs"))
     .expect("Couldn't write bindings!");
 }
