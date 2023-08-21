@@ -4,6 +4,15 @@ version = "0.1.0"
 edition = "2021"
 [lib]
 path = "lib.rs"
+[features]
+default = ["btrfs", "btrfsutil"]
+btrfs = ["btrfs-sys"]
+btrfsutil = ["btrfsutil-sys"]
 [dependencies]
-btrfs-sys = { version = "0.1.0", path = "btrfs" }
-btrfsutil-sys = { version = "0.1.0", path = "btrfsutil" }
+libc = "0.2.147"
+btrfs-sys = { version = "0.1.0", path = "btrfs", optional = true }
+btrfsutil-sys = { version = "0.1.0", path = "btrfsutil", optional = true }
+bitflags = "2.4.0"
+chrono = "0.4.26"
+uuid = "1.4.1"
+
