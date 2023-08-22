@@ -142,6 +142,18 @@ find_import() {
   echo "//IMG=\"$IMG\""
 }
 
+find_import() {
+  if [ -x "`command -v curl`" ]; then
+    echo "curl: OK"
+    CURL=curl
+  else
+    echo "CURL not found. Try setting env var CURL or install"
+    exit 1
+  fi
+  export CURL
+  echo "//CURL=\"$CURL\""
+}
+
 find_deps() {
   find_make
   find_sbcl

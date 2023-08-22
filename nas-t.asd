@@ -6,6 +6,9 @@
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
   :depends-on (:cl-ppcre :macs :sxp)
+  :build-operation "program-op"
+  :build-pathname "bin/nasd"
+  :entry-point "nas-t:main"
   :in-order-to ((test-op (test-op "nas-t/tests")))
   :components ((:module "src"
 		:components ((:file "pkg")

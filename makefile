@@ -28,15 +28,18 @@ L=sbcl --noinform --non-interactive $(ll2)
 endif
 
 all::compile
-.PHONY::podman-init podman-ps hg-yolo vars compile install clean
+.PHONY::podman-init podman-ps hg-yolo compile install clean deps vars bin
 deps:$(INFRA_DIR)/deps.sh;$< find_all_deps
 vars:;echo -e $(VARS)
 
 compile::;$(L) --eval '(asdf:compile-system :nas-t)'
 test::tests/pkg.lisp;$(L) --eval '(asdf:test-system :nas-t)'
-install::;$(L) --eval '(asdf:make :nas-t)'
+bin:;mkdir -pv $@
+nasd:bin compile;$(L) --eval '(asdf:make :nas-t)'
+build::nasd;
+install::build;install -m 755 nasd /usr/local/bin
 clean::;rm -rf */*.fasl
 
 podman-init:;$(PM) pod create --name $(POD_NAME)
 podman-ps:;$(PM) ps -a --pod
-hg-yolo:;hg commit -A -m make-hg-yolo-$(date);hg push;hg-fast-export.sh # babel dependency
+hg-yolo:;hg commit -A -m make-hg-yolo-$(date);hg push;hgfe # babel+cfg dependency
