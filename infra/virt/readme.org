@@ -4,4 +4,4 @@
 =virt= is a collection of scripts and configs for virtualization. This includes anything
 from containers to kvm.
 
-Our preferred container engine is Podman running in user-mode. QEMU is used for VMs.
+Our preferred container engine is [[https://podman.io/][Podman]].
