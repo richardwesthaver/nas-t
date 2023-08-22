@@ -129,6 +129,19 @@ find_podman() {
   echo "//PODMAN=\"$PODMAN\""
 }
 
+### dev/utils
+find_import() {
+  if [ -x "`command -v import`" ]; then
+    echo "import: OK"
+    IMG=import
+  else
+    echo "Import not found. Try setting env var IMG or install imagemagick"
+    exit 1
+  fi
+  export IMG
+  echo "//IMG=\"$IMG\""
+}
+
 find_deps() {
   find_make
   find_sbcl
@@ -142,6 +155,7 @@ find_all_deps() {
   find_npm
   find_wasm_opt
   find_podman
+  find_import
 }
 
 $*

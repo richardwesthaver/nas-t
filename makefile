@@ -27,8 +27,10 @@ else
 L=sbcl --noinform --non-interactive $(ll2)
 endif
 
-all::compile install
-.PHONY::podman-init podman-ps hg-yolo
+all::compile
+.PHONY::podman-init podman-ps hg-yolo vars compile install clean
+deps:$(INFRA_DIR)/deps.sh;$< find_all_deps
+vars:;echo -e $(VARS)
 
 compile::;$(L) --eval '(asdf:compile-system :nas-t)'
 test::tests/pkg.lisp;$(L) --eval '(asdf:test-system :nas-t)'

@@ -12,10 +12,6 @@ SHELL=/bin/sh
 UNAME=$(shell uname)
 CURL:=curl -OL
 CPU_COUNT:=$(shell getconf _NPROCESSORS_ONLN)
-HG_COMMIT:=
-GIT_COMMIT:=
+HG_COMMIT:=$(shell hg id -i)
 VERSION:=
-VARS:=$(foreach v,$(filter-out $(__) __,$(.VARIABLES)),$(info $(v) = $($(v))))
-deps::$(INFRA_DIR)/deps.sh;$< find_all_deps
-.PHONY::vars
-vars::;$(VARS) echo
+VARS:=$(foreach v,$(filter-out $(__) __,$(.VARIABLES)),"\n$(v) = $($(v))")
