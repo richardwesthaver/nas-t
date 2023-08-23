@@ -21,7 +21,7 @@
 (require 'org)
 (require 'ox-publish)
 (require 'ox-html)
-
+(require 'citeproc)
 (defvar nas-t-content-file (expand-file-name "content.org"))
 
 (defun nas-t-content-export (&optional file)
