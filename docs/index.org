@@ -10,6 +10,7 @@ software. Choose one of the topics below to get started.
   complete installation guide
 - [[file:tutorial.org][Tutorial]]
   in-depth tutorial with detailed examples
+- [[file:blog.org][Blog]]
 - [[file:roadmap.org][Roadmap]]
   The NAS-T development roadmap
 - [[file:api.org][API]]
