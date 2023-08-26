@@ -1,6 +1,6 @@
 ;;; src/fs/btrfs/btrfs.lisp --- BTRFS common-lisp API
 (defpackage btrfs
-  (:use :cl)
+  (:use :cl :sb-alien)
   (:export
    :btrfs-shared-objects
    :btrfs-lib-path

@@ -39,6 +39,7 @@ pub enum SysError {
   Btrfs(BtrfsSysError),
   BtrfsUtil(BtrfsUtilSysError),
   Utf8(std::str::Utf8Error),
+  Dl(DlError),
   UnknownErrorCode(u32),
 }
 
@@ -48,6 +49,7 @@ impl std::fmt::Display for SysError {
       SysError::Btrfs(ref e) => e.fmt(f),
       SysError::BtrfsUtil(ref e) => e.fmt(f),
       SysError::Utf8(ref e) => e.fmt(f),
+      SysError::Dl(ref e) => e.fmt(f),
       SysError::UnknownErrorCode(ref n) => f.write_fmt(format_args!("invalid error code: {}", n)),
     }
   }
@@ -59,6 +61,7 @@ impl std::error::Error for SysError {
       SysError::Btrfs(ref e) => Some(e),
       SysError::BtrfsUtil(ref e) => Some(e),
       SysError::Utf8(ref e) => Some(e),
+      SysError::Dl(ref e) => Some(e),
       SysError::UnknownErrorCode(_) => None,
     }
   }
@@ -188,3 +191,27 @@ impl std::fmt::Display for BtrfsUtilSysError {
 }
 
 impl std::error::Error for BtrfsUtilSysError {}
+
+/// A dynamic-loader error.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub enum DlError {
+  DlOpen(String),
+  DlOpenUnknown,
+  DlSym(String),
+  DlSymUnknown,
+  DlClose(String),
+  DlCloseUnknown,
+  IncompatibleSize,
+  CreateCString,
+  CreateCStringWithTrailing,
+}
+
+impl std::fmt::Display for DlError {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        std::fmt::Debug::fmt(&self, f)
+    }
+}
+
+impl std::error::Error for DlError {}
+
+

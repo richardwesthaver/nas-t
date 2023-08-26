@@ -21,7 +21,10 @@
                                            (:file "transport")))
                              (:module "client")
                              (:module "util"
-                                      :components ((:file "macs")))))))
+                              :components ((:file "pkg")
+                                           (:file "macs" :depends-on ("pkg"))
+                                           (:file "test" :depends-on ("pkg"))))))))
+                                                 
 
 (defsystem "nas-t/infra"
   :version "0.1.0"
