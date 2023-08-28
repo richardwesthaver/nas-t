@@ -1,4 +1,5 @@
-.*[.](fasl|lock|elc|eln|scratch)$
+.*[.](fasl|lock|elc|eln|scratch|tar)$
 .*(target|dist|node_modules|target-trunk|bin)/.*
 .*Cargo.lock$
 .*/(scratch|stash)/.*$
+infra/linux/linux-[0-9]+[.].*/.*
