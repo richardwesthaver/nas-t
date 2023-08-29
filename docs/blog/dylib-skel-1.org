@@ -1,5 +1,6 @@
 #+TITLE: dylib-skel (part 1)
 * Overview
++ CODE :: [[https://lab.rwest.io/nas-t/stash/dysk][nas-t/stash/dysk]]
 Our core languages are [[https://www.rust-lang.org/][Rust]] and [[https://lisp-lang.org/][Lisp]] - this is the killer combo which will allow NAS-T
 to rapidly develop high-quality software. As such, it's crucial that these two very
 different languages (i.e. compilers) are able to interoperate seamlessly.
@@ -88,7 +89,7 @@ documentation = true
 documentation_style = "c99"
 usize_is_size_t = true
 [cython]
-header = '"dysk.h"'
+header = "dysk.h"
 #+end_src
 **** build.rs
 #+begin_src rust :tangle build.rs
@@ -102,17 +103,17 @@ fn main() -> Result<(), cbindgen::Error> {
 //! lib.rs --- dysk library
 use std::ffi::{c_char, c_int, CString};
 #[no_mangle]
-pub extern "C" fn dysk_hello() -> *const c_char {
+pub extern "C" fn hello() -> *const c_char {
   CString::new("hello from rust").unwrap().into_raw()}
 #[no_mangle]
-pub extern "C" fn dysk_plus(a:c_int,b:c_int) -> c_int {a+b}
+pub extern "C" fn plus(a:c_int,b:c_int) -> c_int {a+b}
 #[no_mangle]
-pub extern "C" fn dysk_plus1(n:c_int) -> c_int {n+1}
+pub extern "C" fn plus1(n:c_int) -> c_int {n+1}
 #+end_src
 ** test.rs
 #+begin_src rust :tangle test.rs
 //! test.rs --- dysk test
-fn main() { let mut i = 0u32; while i < 500000000 {i+=1; dysk::dysk_plus1(2 as core::ffi::c_int);}}
+fn main() { let mut i = 0u32; while i < 500000000 {i+=1; dysk::plus1(2 as core::ffi::c_int);}}
 #+end_src
 ** compile
 #+begin_src sh
@@ -120,16 +121,21 @@ cargo build --release
 #+end_src
 ** load from SBCL
 #+begin_src lisp :tangle dysk.lisp
+;;; dysk.lisp
+;; (dysk:hello) ;; => "hello from rust"
+(defpackage :dysk
+  (:use :cl :sb-alien)
+  (:export :hello :plus :plus1))
+(in-package :dysk)
 (load-shared-object #P"target/release/libdysk.so")
-(define-alien-routine dysk-hello c-string)
-(define-alien-routine dysk-plus int (a int) (b int))
-(define-alien-routine dysk-plus1 int (n int))
-(dysk-hello) ;; => "hello from rust"
+(define-alien-routine hello c-string)
+(define-alien-routine plus int (a int) (b int))
+(define-alien-routine plus1 int (n int))
 #+end_src
 ** benchmark
 #+begin_src shell
 time target/release/dysk-test
 #+end_src
 #+begin_src lisp :tangle test.lisp
-(time (dotimes (_ 500000000) (dysk-plus1 2)))
+(time (dotimes (_ 500000000) (dysk:plus1 2)))
 #+end_src

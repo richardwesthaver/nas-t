@@ -205,6 +205,12 @@ Namespaces (ZNS) in NVMe SSDs.
 *** {BTreeMap,BTreeSet}::extract_if
 - [[https://github.com/rust-lang/rust/issues/70530][tracking-issue]]
 * Lisp
+** SBCL
+SBCL is our Common Lisp compiler of choice. We make heavy use of the implementation
+details in our software and it's infeasible to consider building our code with a
+different compiler.
+
+- [cite/t/f:@lisp-internals]
 ** ASDF
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
