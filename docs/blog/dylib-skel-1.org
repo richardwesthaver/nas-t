@@ -19,7 +19,8 @@ The level of interop we're after in this case is [[https://en.wikipedia.org/wiki
 Basically, calling Rust code from Lisp and vice-versa. There's an article about calling
 Rust from Common Lisp [[https://dev.to/veer66/calling-rust-from-common-lisp-45c5][here]] which shows the basics and serves as a great starting point
 for those interested.
-** Rust != C
+** Nothing wrong with C
+** Rust ABI
 The complication(s) with Rust I mentioned early is really just that /it is not C/. =C=
 is old, i.e. well-supported with a stable ABI, making the process of creating bindings
 for a C library a breeze in many languages.
@@ -30,13 +31,18 @@ functions with a type signature and editing the Cargo.toml file to produce a
 C-compatible ABI binary. The Rust default ABI is unstable and can't reliably be used
 like the C ABI can.
 
+[[https://github.com/rodrimati1992/abi_stable_crates][abi_stable_crates]] is a project which addresses some of the ABI concerns, presenting a
+sort of ABI-API as a Rust library. Perhaps this is the direction the ecosystem will go
+with in order to maintain an unstable ABI, but for now there is no 'clear' pathway for a
+friction-less FFI development experience in Rust.
+
 ** Overhead
 Using FFI involves some overhead. Check [[https://github.com/dyu/ffi-overhead][here]] for an example benchmark across a few
 languages. While building the NAS-T core, I'm very much aware of this, and will need a
 few sanity benchmarks to make sure the cost doesn't outweigh the benefit. In particular,
 I'm concerned about crossing multiple language barriers (Rust<->C<->Lisp).
 
-* Rust -> C -> Lisp
+* Basic Example
 ** Setup
 For starters, I'm going to assume we all have Rust (via =rustup=) and Lisp (=sbcl= only)
 installed on our GNU/Linux system (some tweaks needed for Darwin/Windows, not covered in
@@ -138,4 +144,42 @@ time target/release/dysk-test
 #+end_src
 #+begin_src lisp :tangle test.lisp
 (time (dotimes (_ 500000000) (dysk:plus1 2)))
+#+end_src
+
+* libquiche
+Moving right along, our next example involves Cloudflare's [[https://github.com/cloudflare/quiche/tree/master][quiche]] crate, which is a Rust
+implementation of the QUIC transport protocol and HTTP/3 (more on that later).
+
+quiche is implemented in Rust, but exposes a thin C API for FFI purposes which is
+perfect for our use-case.
+
+Like the previous example, it isn't necessary to generate a C header file but it's
+useful for reference. Here's [[https://github.com/cloudflare/quiche/blob/master/quiche/include/quiche.h][quiche.h]].
+
+** Setup
+Clone the quiche source code somewhere close and build it:
+#+begin_src shell
+git clone https://github.com/cloudflare/quiche  lib
+cd lib && cargo build --release --features ffi
+#+end_src
+
+Create a =quiche.lisp= file with the following boilerplate code:
+#+begin_src lisp
+(defpackage :dysk.quiche
+  (:use :cl :sb-alien))
+(in-package :dysk.basic)
+(load-shared-object #P"lib/target/release/libquiche.so")
+#+end_src
+
+Now when you load =quiche.lisp= and connect a repl, we'll have access to the symbols in
+=libquiche.so= which we can build an API around /interactively/. Neat!
+
+#+begin_src shell
+sbcl --load quiche.lisp
+#+end_src
+
+#+begin_src lisp
+(in-package :dysk.quiche)
+(define-alien-routine quiche-version c-string) ;; >> QUICHE-VERSION
+(quiche-version) ;; >> "0.18.0"
 #+end_src
