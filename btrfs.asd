@@ -15,9 +15,8 @@
   :in-order-to ((test-op (test-op "btrfs/tests")))
   :components ((:module "src/fs/btrfs"
                 :components
-                ((:file "btrfs")
-                 (grovel-constants-file "constants"
-                                        :package :btrfs)))))
+                ((:file "btrfs")))))
+                 
 
 (defsystem "btrfs/tests"
   :version "0.1.0"
