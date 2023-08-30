@@ -1,6 +1,6 @@
 #+TITLE: dylib-skel (part 1)
 * Overview
-+ CODE :: [[https://lab.rwest.io/nas-t/stash/dysk][nas-t/stash/dysk]]
++ CODE :: [[https://lab.rwest.io/packy/stash/dysk][packy/stash/dysk]]
 Our core languages are [[https://www.rust-lang.org/][Rust]] and [[https://lisp-lang.org/][Lisp]] - this is the killer combo which will allow NAS-T
 to rapidly develop high-quality software. As such, it's crucial that these two very
 different languages (i.e. compilers) are able to interoperate seamlessly.

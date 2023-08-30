@@ -1,6 +1,6 @@
 #+TITLE: dylib-skel (part 2)
 * Overview
-+ CODE :: [[https://lab.rwest.io/packy/stash/dysk][packy/stash/dylib]]
++ CODE :: [[https://lab.rwest.io/packy/stash/dysk][packy/stash/dysk]]
 Welcome back! This is *part two* of a two part series on dynamic library loading. The
 topic of this post is =Lisp -> Rust= FFI bindings. If you're interested in the opposite
 scenario =Rust -> Lisp= or are unfamiliar with FFI fundamentals, check out the [[file:dylib-skel-1.org][previous
