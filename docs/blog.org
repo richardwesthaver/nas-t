@@ -7,7 +7,7 @@ members to share their own articles on the offical blog too.
 
 Nothing is too far-fetched to be posted here, so be sure to use the tags to find posts
 that interest you.
-
 * Posts
-** 00 [[file:blog/dylib-skel-1.org][dylib-skel (part 1)]]                                    :rust:lisp:ffi:
-** 01 [[file:blog/dylib-skel-2.org][dylib-skel (part 2)]]                                     ::lisp:rust:ffi:
+** 0 [[file:blog/0-dylib-skel-1.org][dylib-skel (part 1)]]                                     :dev:rust:lisp:ffi:
+** 1 [[file:blog/1-dylib-skel-2.org][dylib-skel (part 2)]]                                    :dev:lisp:rust:ffi:
+** 2 [[file:blog/2-code-outlines.org][code outlines]]                                    :dev:

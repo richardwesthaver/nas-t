@@ -1,0 +1,24 @@
+#+TITLE: Code Outlines
+* Overview
+Source code files are hard to manage. They can get unwieldly quickly and making the
+wrong assumption about your whereabouts in the code tree can have unintended
+consequences.
+
+There are many ways to solve this problem to different degrees. We'll be talking about
+one strategy in particular which I use and recommend for any software project.
+
+* Outlines
+Looking through the source code in the NAS-T repository you'll find some common
+commenting patterns - every file start with at least one comment line for example. These
+patterns are used to provide structure, and that structure is used to quickly navigate
+our code with Emacs.
+
+** Default Sections
+
+*** Header
+
+*** Meta
+
+*** Commentary
+
+*** Code
