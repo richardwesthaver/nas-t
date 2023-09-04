@@ -70,7 +70,7 @@ Emacs session:
 	   do (keymap-set m k fn)))
 #+end_src
 
-Now open a file in the [[file:~/dev/nas-t/src/][src]] directory, like [[file:~/dev/nas-t/src/fs/btrfs/btrfs.lisp][this]] one and go wild.
+Now open a file in the [[../../src/][src]] directory, like [[../../src/fs/btrfs/btrfs.lisp][this]] one and go wild.
 ** Default Sections
 
 *** Header
