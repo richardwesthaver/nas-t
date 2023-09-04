@@ -1,7 +1,8 @@
 #+TITLE: notes
 #+BIBLIOGRAPHY: refs.bib
-* File Systems
-** BTRFS
+#+TODO: TIP REF NOTE | OK
+* File Systems                                                           :fs:
+** BTRFS                                                             :btrfs:
 #+begin_quote
 BTRFS is a Linux filesystem based on copy-on-write, allowing for
 efficient snapshots and clones.
@@ -137,28 +138,28 @@ servers. This entails challenges on many different fronts.
   - https://docs.kernel.org/userspace-api/ioctl/ioctl-number.html
   - Btrfs filesystem some lifted to vfs/generic
   - fs/btrfs/ioctl.h and linux/fs.h
-** ZFS
+** ZFS                                                                 :zfs:
 -- [cite/t/f:@zfs]
 
 - core component of TrueNAS software
-** TMPFS
+** TMPFS                                                             :tmpfs:
 -- [cite/t/f:@tmpfs]
 - in-mem FS
-** EXT4
+** EXT4                                                               :ext4:
 -- [cite/t/f:@ext4]
-** XFS
+** XFS                                                                 :xfs:
 -- [cite/t/f:@xfs]
 -- [cite/t/f:@xfs-scalability]
-* Storage Mediums
-** HDD
+* Storage Mediums                                                   :data:hw:
+** HDD                                                                 :hdd:
 -- [cite/t/f:@hd-failure-ml]
-** SSD
+** SSD                                                                 :ssd:
 -- [cite/t/f:@smart-ssd-qp]
 -- [cite/t/f:@ssd-perf-opt]
 
-** Flash
+** Flash                                                             :flash:
 -- [cite/t/f:@flash-openssd-systems]
-** NVMe
+** NVMe                                                               :nvme:
 -- [cite/t/f:@nvme-ssd-ux]
 -- [[https://nvmexpress.org/specifications/][specifications]]
 *** ZNS
@@ -171,13 +172,13 @@ Namespaces (ZNS) in NVMe SSDs.
 #+end_quote
 -- [[https://zonedstorage.io/][zonedstorage.io]]
 -- $465 8tb 2.5"? [[https://www.serversupply.com/SSD/PCI-E/7.68TB/WESTERN%20DIGITAL/WUS4BB076D7P3E3_332270.htm][retail]]
-** eMMC
+** eMMC                                                               :emmc:
 -- [cite/t/f:@emmc-mobile-io]
-* Linux
+* Linux                                                               :linux:
 ** syscalls
 *** ioctl
 - [[https://elixir.bootlin.com/linux/latest/source/Documentation/userspace-api/ioctl/ioctl-number.rst][ioctl-numbers]]
-* Rust
+* Rust                                                                 :rust:
 ** crates
 *** nix
 - [[https://crates.io/crates/nix][crates.io]]
@@ -204,13 +205,18 @@ Namespaces (ZNS) in NVMe SSDs.
 - [[https://github.com/rust-lang/rust/issues/109736][tracking-issue]]
 *** {BTreeMap,BTreeSet}::extract_if
 - [[https://github.com/rust-lang/rust/issues/70530][tracking-issue]]
-* Lisp
-** SBCL
+* Lisp                                                                 :lisp:
+** SBCL                                                               :sbcl:
 SBCL is our Common Lisp compiler of choice. We make heavy use of the implementation
 details in our software and it's infeasible to consider building our code with a
 different compiler.
-
 - [cite/t/f:@lisp-internals]
+*** GC
+- [[https://medium.com/@MartinCracauer/llvms-garbage-collection-facilities-and-sbcl-s-generational-gc-a13eedfb1b31][LLVM and SBCL GC]]
+- [[https://www.cons.org/cracauer/cracauer-userfaultfd.c][cracauer-userfaultfd.c]]
+
+#+name: SBCL dynamic heap layout
+[[https://miro.medium.com/v2/resize:fit:4800/format:webp/1*C4-RE62lyEDyn59uDOODIQ.png]]
 ** ASDF
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
@@ -237,5 +243,9 @@ different compiler.
 - [[https://github.com/kindista/kindista][github]]
 *** lisp-chat
 - [[https://github.com/ryukinix/lisp-chat][github]]
+* Style
+- note: this isn't about 'code style'. this is about UI/UX.
+** colors
+- [[https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems][Stop Using HSL for Color Systems]]
 * Refs
 #+print_bibliography:

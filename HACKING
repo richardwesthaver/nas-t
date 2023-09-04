@@ -1,8 +1,10 @@
 STYLE:
   space=2, line=88, kebab-case
-  ~1024 line max for single-file mods
-  ~512 line max/file for multi-file mods
-       
+  ~1024 line max for single-file pkg
+  ~512 line max/file for multi-file pkg
+
+  when in doubt, use google: https://google.github.io/styleguide/lispguide.xml
+
 LAYOUT:
   - src/     : nas-t source tree
     - core     : core modules
@@ -22,17 +24,17 @@ LAYOUT:
 
 NOTES:
   - NAS-T's core langs are Common Lisp and Rust. We use the most recent
-  stable versions of SBCL and the Rust compiler.
+    stable versions of SBCL and the Rust compiler.
 
   - We use contrib libraries from SBCL throughout the codebase,
-  other Common Lisp implementations are not supported.
+    other Common Lisp implementations are not supported.
 
   - The source is under Mercurial version control. If you wish to
-  contribute your changes upstream, it is recommended to use the
-  upstream source.
+    contribute your changes upstream, it is recommended to use the
+    upstream source.
 
   - To load the Common Lisp systems you will need the following
-  dependencies (not on quicklisp):
+    dependencies (not on quicklisp):
     - MACS  - https://lab.rwest.io/ellis/macs
     - SXP   - https://lab.rwest.io/ellis/sxp
     - ORGAN - https://lab.rwest.io/ellis/organ
@@ -45,7 +47,7 @@ NOTES:
 
   - Microsoft Windows is not supported.
 
-  - Makefile Oneliners are preferred.
+  - Makefiles are terse.
 
   - We use Makefile double-colon rules to achieve target specialization.
     - https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_node/make_43.html

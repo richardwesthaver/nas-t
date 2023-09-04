@@ -7,12 +7,70 @@ consequences.
 There are many ways to solve this problem to different degrees. We'll be talking about
 one strategy in particular which I use and recommend for any software project.
 
-* Outlines
 Looking through the source code in the NAS-T repository you'll find some common
-commenting patterns - every file start with at least one comment line for example. These
-patterns are used to provide structure, and that structure is used to quickly navigate
-our code with Emacs.
+commenting patterns:
 
+- every file start with at least one comment line for example:
+#+begin_src lisp
+;;; file-name.lisp --- file description
+#+end_src
+
+- Before you see any code in a file, you'll encounter this line:
+#+begin_src lisp
+;;; Code:
+#+end_src
+
+- etc
+
+What's the deal here? To be clear, I'm of the mind that comments should be
+significant. They should express to the reader something that is of a non-trivial nature
+and 'where the code starts' doesn't quite qualify. Indeed, these comments don't fit that
+model at all.
+
+The deal is that these comments aren't for the reader, they're for the developer. More
+specifically, for the developer to treat as a special meta-language to describe the
+structure of a source code file.
+
+* Outlines
+Like all my good ideas, this one is credited entirely to Emacs. In this case, the
+excellent [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Outline-Mode.html][Outline mode]]. If you are an Emacs user you've probably already used it without
+knowing -- Org mode, for example, is [[https://git.savannah.gnu.org/cgit/emacs/org-mode.git/tree/lisp/org.el?h=release_9.6.9#n4789][derived from outline-mode]].
+
+I've grown quite fond of it. Here's the summary:
+
+#+begin_quote
+Outline mode is a major mode derived from Text mode, which is specialized for editing
+outlines. It provides commands to navigate between entries in the outline structure, and
+commands to make parts of a buffer temporarily invisible, so that the outline structure
+may be more easily viewed.
+#+end_quote
+-- [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Outline-Mode.html][GNU]]
+
+** Quickstart
+If you want to jump in right away, I recommend using these keybinds in Emacs:
+
+#+tblname: outline-keys
+| <backtab> | outline-cycle-buffer             |
+| M-TAB     | outline-cycle                    |
+| M-n       | outline-next-visible-heading     |
+| M-p       | outline-previous-visible-heading |
+
+Here's a snippet which will enable those keys for all programming modes in the current
+Emacs session:
+
+#+name: enable-outline-keys
+#+begin_src emacs-lisp
+(let ((maps (list prog-mode-map)) ;; add more keymaps here :)
+      (keys '(("<backtab>" #'outline-cycle-buffer)
+	      ("M-TAB" #'outline-cycle)
+	      ("M-n" #'outline-next-visible-heading)
+	      ("M-p" #'outline-previous-visible-heading))))
+  (cl-loop for m in maps
+	   for (k fn) in keys
+	   do (keymap-set m k fn)))
+#+end_src
+
+Now open a file in the [[file:~/dev/nas-t/src/][src]] directory, like [[file:~/dev/nas-t/src/fs/btrfs/btrfs.lisp][this]] one and go wild.
 ** Default Sections
 
 *** Header

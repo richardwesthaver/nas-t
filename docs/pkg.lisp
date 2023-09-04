@@ -1,2 +1,4 @@
 (defpackage nas-t.docs
-  (:use :cl :nas-t :organ :coo))
+  (:use :cl :macs.cli :nas-t :organ :sxp))
+
+(defvar *doc-file-directory* #.*load-pathname*)
