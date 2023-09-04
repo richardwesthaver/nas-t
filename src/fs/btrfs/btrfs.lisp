@@ -25,19 +25,20 @@
 
 (in-package :btrfs)
 
-(defvar btrfs-shared-objects
-  (list '(:btrfs "/usr/lib/libbtrfs.so")
-        '(:btrfsutil "/usr/lib/libbtrfsutil.so")))
-
-(defun btrfs-lib-path (lib) (cadr (assoc lib btrfs-shared-objects)))
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defvar btrfs-shared-objects
+    (list '(:btrfs "/usr/lib/libbtrfs.so")
+          '(:btrfsutil "/usr/lib/libbtrfsutil.so")))
+  
+  (defun btrfs-lib-path (lib) (cadr (assoc lib btrfs-shared-objects))))
                 
 (defmacro when-lib-exists-p ((sym lib) &body body)
   `(let ((,sym ,(btrfs-lib-path lib)))
     (when (uiop:file-exists-p ,sym) ,@body)))
 
-(defun load-btrfs ()
+(defun load-btrfs (&optional save)
   "Open 'libbtrfs' using `dlopen'. exposing the C API to the current Lisp image."
-  (when-lib-exists-p (l :btrfs) (load-shared-object l)))
+  (when-lib-exists-p (l :btrfs) (load-shared-object l :dont-save (not save))))
 
 (defun unload-btrfs ()
   "Close 'libbtrfs' using `dlclose'."

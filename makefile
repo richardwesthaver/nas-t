@@ -1,8 +1,9 @@
-# makefile --- NAS-T Makefile
+### makefile --- NAS-T Makefile
 ## ROOT  --- run podman as root (0,1)
 ## EMACS --- emacs program string
 ## POD_NAME --- name for podman pod
 ## POD_IMAGE_BASE --- base image for podman containers
+### Code:
 include infra/common.mk
 
 ROOT?=0
