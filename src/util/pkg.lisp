@@ -1,3 +1,6 @@
+;;; src/util/pkg.lisp --- utilities
+
+;;; Code:
 (in-package :nas-t.util)
 (defpackage :nas-t.util.macs
   (:use :cl :macs.ana :macs.pan))

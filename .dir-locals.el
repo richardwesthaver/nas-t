@@ -12,6 +12,13 @@
                    (outline-regexp . "###+")))
 
  (org-mode . ((org-edit-src-content-indentation 0)))
- (rust-mode . ((rust-indent-offset . 2)))
- (sh-mode . ((sh-indentation . 2)))
- (sh-script-mode . ((sh-indentation . 2))))
+
+ (rust-mode . ((rust-indent-offset . 2)
+               ;; '//!' or '////+'
+               (outline-regexp . "\\(//!\\|////+\\)")))
+
+ (sh-mode . ((sh-indentation . 2)
+             (outline-regexp . "###+")))
+ 
+ (sh-script-mode . ((sh-indentation . 2)
+                    (outline-regexp . "###+"))))

@@ -1,4 +1,6 @@
-# common.mk --- common GNU Make rules for NAS-T
+### common.mk --- common GNU Make rules for NAS-T
+
+### Code:
 __ := $(.VARIABLES)
 COMMON_MK=$(lastword $(MAKEFILE_LIST))
 INFRA_DIR=$(dir $(COMMON_MK))

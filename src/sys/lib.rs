@@ -1,4 +1,6 @@
 //! sys/lib.rs --- NAS-T System Library
+
+//! Code:
 #[macro_use]
 extern crate bitflags;
 

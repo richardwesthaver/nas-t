@@ -1,4 +1,5 @@
 #!/bin/sh
+### infra/deps.sh --- NAS-T dependencies
 ## basic shell functions for discovering NAS-T dependencies
 
 # from sbcl/find-gnumake.sh

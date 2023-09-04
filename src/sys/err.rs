@@ -1,4 +1,6 @@
 //! sys/err.rs --- System Errors
+
+//! Code:
 use std::os::raw::c_char;
 use std::ffi::CStr;
 use btrfsutil_sys::{

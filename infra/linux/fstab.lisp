@@ -1,3 +1,6 @@
+;;; infra/linux/fstab.lisp --- modify the FS table
+
+;;; Code:
 (in-package :nas-t.infra.linux)
 
 (defmacro with-mountinfo (obj &body body)

@@ -1,1 +1,3 @@
-//! lib.rs --- NAS-T Kernel
+//! lib.rs --- NAS-T VM
+
+//! Code:

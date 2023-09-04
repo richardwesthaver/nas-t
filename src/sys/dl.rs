@@ -1,5 +1,6 @@
 //! sys/dyl.rs --- dynamic loader
 
+//! Code:
 /// Checks for the last byte and avoids allocating if it is zero.
 ///
 /// Non-last null bytes still result in an error.

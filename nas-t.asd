@@ -37,7 +37,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:nas-t)
+  :depends-on (:nas-t :macs)
   :components ((:module "infra"
 		:components ((:file "pkg")
 			     (:file "web/tests")))))
@@ -48,7 +48,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on(:nas-t :organ)
+  :depends-on(:nas-t :organ :macs)
   :components ((:module "docs"
 		:components ((:file "pkg")))))
 
@@ -58,7 +58,7 @@
   :maintainer "ellis <ellis@rwest.io>"
   :homepage "https://nas-t.net"
   :bug-tracker "https://lab.rwest.io/comp/startup/nas-t/issues"
-  :depends-on (:nas-t :sb-rt)
+  :depends-on (:nas-t :macs :macs/rt)
   :components ((:module "tests"
 		:components ((:file "pkg"))))
   :perform (test-op (op c) (uiop:symbol-call '#:nas-t.tests '#:run-all-tests)))

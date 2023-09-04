@@ -1,3 +1,4 @@
+//! src/sys/btrfsutil/build.rs --- libbtrfsutil bindgen builder
 fn main() {
   println!("cargo:rustc-link-search=/usr/include");
   println!("cargo:rustc-link-lib=btrfsutil");
