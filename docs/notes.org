@@ -214,9 +214,42 @@ different compiler.
 *** GC
 - [[https://medium.com/@MartinCracauer/llvms-garbage-collection-facilities-and-sbcl-s-generational-gc-a13eedfb1b31][LLVM and SBCL GC]]
 - [[https://www.cons.org/cracauer/cracauer-userfaultfd.c][cracauer-userfaultfd.c]]
-
+- Q :: how can we use kernel-level monitoring to improve GC?
+  - both at runtime and compile
+  - BPF?
+    - [[https://medium.com/@yunwei356/ebpf-tutorial-by-example-15-capturing-user-space-java-gc-event-duration-using-usdt-46436f772ce8][java-gc-usdt]] - insert trace points
+    - [[https://theartofmachinery.com/2019/04/26/bpftrace_d_gc.html][d-gc]] - bpftrace
+- [2023-09-04 Mon] a new mark-region GC was merged last month
+  - [[https://applied-langua.ge/~hayley/swcl-gc.pdf][paper]]
+  - [[https://github.com/sbcl/sbcl/blob/master/doc/internals-notes/mark-region][internal-notes]]
+  - [[https://github.com/no-defun-allowed/swcl][upstream repo]] - no-defun-allowed / Steel Wool Common Lisp - I like this guy already
+    lol
 #+name: SBCL dynamic heap layout
 [[https://miro.medium.com/v2/resize:fit:4800/format:webp/1*C4-RE62lyEDyn59uDOODIQ.png]]
+*** XC
+One problem unique to Lisps is best described by the SBCL folks here in the =Instruction
+Set Dispatch= section of the =sb-simd= docs:
+
+#+begin_quote
+One challenge that is unique to image-based programming systems such as Lisp is that a
+program can run on one machine, be dumped as an image, and then resumed on another
+machine. While nobody expects this feature to work across machines with different
+architectures, it is quite likely that the machine where the image is dumped and the one
+where execution is resumed provide different instruction set extensions.
+
+As a practical example, consider a game developer that develops software on an x86-64
+machine with all SIMD extensions up to AVX2, but then dumps it as an image and ships it
+to a customer whose machine only supports SIMD extensions up to SSE2. Ideally, the image
+should contain multiple optimized versions of all crucial functions, and dynamically
+select the most appropriate version based on the instruction set extensions that are
+actually available.
+
+This kind of run time instruction set dispatch is explicitly supported by means of the
+=instruction-set-case= macro. The code resulting from an invocation of this macro
+compiles to an efficient jump table whose index is recomputed on each startup of the
+Lisp image.
+#+end_quote
+
 ** ASDF
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
