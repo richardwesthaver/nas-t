@@ -211,7 +211,7 @@ SBCL is our Common Lisp compiler of choice. We make heavy use of the implementat
 details in our software and it's infeasible to consider building our code with a
 different compiler.
 - [cite/t/f:@lisp-internals]
-*** GC
+*** GC                                                                 :gc:
 - [[https://medium.com/@MartinCracauer/llvms-garbage-collection-facilities-and-sbcl-s-generational-gc-a13eedfb1b31][LLVM and SBCL GC]]
 - [[https://www.cons.org/cracauer/cracauer-userfaultfd.c][cracauer-userfaultfd.c]]
 - Q :: how can we use kernel-level monitoring to improve GC?
@@ -226,7 +226,7 @@ different compiler.
     lol
 #+name: SBCL dynamic heap layout
 [[https://miro.medium.com/v2/resize:fit:4800/format:webp/1*C4-RE62lyEDyn59uDOODIQ.png]]
-*** XC
+*** XC                                                                 :xc:
 One problem unique to Lisps is best described by the SBCL folks here in the =Instruction
 Set Dispatch= section of the =sb-simd= docs:
 
@@ -249,8 +249,23 @@ This kind of run time instruction set dispatch is explicitly supported by means 
 compiles to an efficient jump table whose index is recomputed on each startup of the
 Lisp image.
 #+end_quote
+*** ASM                                                               :asm:
+The type of assembly workflow we're after is basically Lisp<->Forth->Codes.
+- Don't call an external assembler (nasm,fasm,gas) - build your own or wrap SBCL's
+  =sb-assem:assemble=.
+- Define a Forth compiler in Lisp.
+- Define words (op,noun,verb,inst) and vocabs for instruction sets.
+- Write Lisp which compiles to Forth, or just write Forth and then:
+- compile your Forth, and feed it to your assembler.
 
-** ASDF
+Note the two-way channel between Lisp and Forth. This is where things can get really
+interesting - where you may call Lisp from Forth or call Forth from Lisp. My intention
+is to treat our Forth(s) as a 'control language' for an assembler - currently only at
+compile-time but the natural evolution would be runtime support on various
+platforms.
+
+- [[https://pvk.ca/Blog/2014/03/15/sbcl-the-ultimate-assembly-code-breadboard/][SBCL: the ultimate assembly code breadboard]]
+** ASDF                                                              :packy:
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
 - [[https://github.com/fare/asdf/blob/master/doc/best_practices.md][best-practices]]
