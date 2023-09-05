@@ -6,7 +6,7 @@
 ((nil . ((indent-tabs-mode)
 	 (fill-column . 88)
 	 (project-vc-ignores . ("./scratch"))
-         (compile-command . "make ")))  ; FIX 2023-09-03: should be function
+         (compile-command . "make")))  ; FIX 2023-09-03: should be function
 
  (makefile-mode . ((indent-tabs-mode . t)
                    (outline-regexp . "###+")))

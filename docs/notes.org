@@ -276,6 +276,36 @@ Lisp image.
 - [[https://github.com/kindista/kindista][github]]
 *** lisp-chat
 - [[https://github.com/ryukinix/lisp-chat][github]]
+* Forth                                                               :forth:
+As DH would say, Forth is a Blub+Non-Flub language and Lisp is a Non-Blub+Flub
+language. It seems the two would be a natural pairing.
+
+To my knowledge no one has successfully deployed a modern Forth+Lisp stack and we're not
+about to try. We are already committed to Rust+Lisp and Forth doesn't really compete
+with either lang anyways. We will however be ever inspired by the Forth Philosophy and
+it will play a role in our development, although we may never refer to it directly.
+
+The tell-all tale is best described by Chuck himself in 'A Problem Oriented Programming
+Language'. The program which he describes receives words as input and produces machine
+code. It is a compiler, interpreter, and assembler which closely resembles an
+iterator. Internally it calls a core =NEXT= routine.
+
+What I love so much about this book is that Chuck understands computers. He has
+something which I've come to know as /Machine Empathy/ and a lifetime of experience to
+back it up. Unlike the vast majority of programmers, Chuck pays close attention to the
+welfare of the computer. Chuck understands that machines have preferences, opinions
+even. A machine may be healthy, or it could be sick. The *happiness* of the machine is
+an end in itself and the best way to keep our machine happy is by writing *good codes*,
+or at least, the best available codes. The only way to do this, is to do it yourself.
+
+If the machine is in good health and is happy with your codes, the problem you need to
+solve becomes beautifully simple. 
+
+There are many stack machines in the programs we build, so it comes in handy to have a
+foundation of 'stack semantics' to build on and a 'control language' to operate it
+with. Forth is both of these things, and it's a no-code dependency ;).
+- [[https://wiki.c2.com/?ForthVsLisp][Forth vs Lisp]]
+- [[https://www.greenarraychips.com/][GreenArrays, Inc.]]
 * Style
 - note: this isn't about 'code style'. this is about UI/UX.
 ** colors
