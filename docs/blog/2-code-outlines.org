@@ -56,41 +56,74 @@ If you want to jump in right away, I recommend using these keybinds in Emacs:
 | M-n       | outline-next-visible-heading     |
 | M-p       | outline-previous-visible-heading |
 
-Here's a snippet which will enable those keys for all programming modes in the current
-Emacs session:
+Here's a snippet which will enable the keybinds I use:
 
 #+name: enable-outline-keys
 #+begin_src emacs-lisp
-(let ((maps (list prog-mode-map)) ;; add more keymaps here :)
-      (keys '(("<backtab>" #'outline-cycle-buffer)
+(let ((keys
+      '(("<backtab>" #'outline-cycle-buffer)
 	      ("M-TAB" #'outline-cycle)
 	      ("M-n" #'outline-next-visible-heading)
 	      ("M-p" #'outline-previous-visible-heading))))
-  (cl-loop for m in maps
-	   for (k fn) in keys
-	   do (keymap-set m k fn)))
+  (cl-loop for (k fn) in keys
+	   do (keymap-set outline-minor-mode-map k fn)))
 #+end_src
 
-Now open a file in the [[../../src/][src]] directory, like [[../../src/fs/btrfs/btrfs.lisp][this]] one and move around the file with the
-new keybinds above.
+Now open a file in the [[../../src/][src]] directory, like [[../../src/fs/btrfs/btrfs.lisp][this]] one, enable =outline-minor-mode= and
+move around the file with the new keybinds above.
 
 ** Outlines4All
 Not all programming modes have outline support built-in. The good news is that it's easy
 to enable it.
 
-You only need to modify one variable: =outline-regexp=. The way it's done in the NAS-T
-codebase is with a [[../../.dir-locals.el][.dir-locals.el]] file. Check the cons where /car/ is =makefile-mode=.
+You only need to modify one variable: =outline-regexp= and enable a minor-mode:
+=outline-minor-mode=.
+
+*** Using dir-locals
+The way it's done in the NAS-T codebase is with a [[../../.dir-locals.el][.dir-locals.el]] file. Check the cons
+where /car/ is =makefile-mode=.
 
 You can do the same for any programming mode, you just need to add this form, replacing
 the string with a regular expression which matches on a /heading/. In this case we treat
 lines starting with three comment chars or more as a new heading.
 #+begin_src lisp-data
-(makefile-mode . ((indent-tabs-mode . t)
-                   (outline-regexp . "###+")))
+(makefile-mode . ((outline-regexp . "###+")))
 #+end_src
 
-For basic support, that's all there is to it.
+=outline-regexp= is declared as a safe local var, so no prompts will appear asking if
+you trust these values. You will need to configure your keybinds and enable the
+minor-mode separately though. For project-level support, that's all there is to it.
 
+*** Using init.el
+You may also modify your config to enable =outline-minor-mode= for select major-modes at
+startup. Here's a quick example from my config:
+
+#+begin_src emacs-lisp
+;;; Code:
+(require 'default 'rw/fu)
+
+(defun outline-hook (rx)
+  "Enable `outline-minor-mode' and set `outline-regexp'."
+  (setq-local outline-regexp rx)
+  (outline-minor-mode t))
+
+(defun add-outline-hook (mode rx)
+    (let ((sym (symb mode "-hook")))
+      (add-hook sym (lambda () (outline-hook rx)))))
+
+(defmacro outline-hooks (&rest pairs)
+  `(mapc (lambda (x) (add-outline-hook (car x) (cadr x))) ',pairs))
+
+(outline-hooks (asm-mode ";;;+")
+	       (nasm-mode ";;;+")	       
+	       (rust-mode "\\(//!\\|////+\\)")
+	       (sh-mode "###+")
+	       (sh-script-mode "###+")
+	       (makefile-mode "###+"))
+
+(provide 'outline-cfg)
+;;; outline-cfg.el ends here
+#+end_src
 ** Default Sections
 Our default sections should look familiar - they're just Emacs Lisp defaults, with a few
 choice extensions.
