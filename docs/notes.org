@@ -206,6 +206,7 @@ Namespaces (ZNS) in NVMe SSDs.
 *** {BTreeMap,BTreeSet}::extract_if
 - [[https://github.com/rust-lang/rust/issues/70530][tracking-issue]]
 * Lisp                                                                 :lisp:
+- [cite/t/f:@lisp-different]
 ** SBCL                                                               :sbcl:
 SBCL is our Common Lisp compiler of choice. We make heavy use of the implementation
 details in our software and it's infeasible to consider building our code with a
@@ -265,6 +266,7 @@ compile-time but the natural evolution would be runtime support on various
 platforms.
 
 - [[https://pvk.ca/Blog/2014/03/15/sbcl-the-ultimate-assembly-code-breadboard/][SBCL: the ultimate assembly code breadboard]]
+- [[https://pvk.ca/Blog/2014/08/16/how-to-define-new-intrinsics-in-sbcl/][how to define new intrinsics in SBCL]]
 ** ASDF                                                              :packy:
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
