@@ -207,6 +207,7 @@ Namespaces (ZNS) in NVMe SSDs.
 - [[https://github.com/rust-lang/rust/issues/70530][tracking-issue]]
 * Lisp                                                                 :lisp:
 - [cite/t/f:@lisp-different]
+- [[https://en.wikipedia.org/wiki/Format_(Common_Lisp)#Format_directives][Format directives]]
 ** SBCL                                                               :sbcl:
 SBCL is our Common Lisp compiler of choice. We make heavy use of the implementation
 details in our software and it's infeasible to consider building our code with a
