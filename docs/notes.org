@@ -1,6 +1,27 @@
 #+TITLE: notes
 #+BIBLIOGRAPHY: refs.bib
 #+TODO: TIP REF NOTE | OK
+* Log
+** Thinking Fast, Going Slow
+- [2023-08-01 Tue] :: /a note from the author/ \\
+  Greetings stranger. My name is Richard Westhaver and I'm a computer
+  programmer living in Connecticut. I started this company as a means
+  to provide high-quality NAS solutions to my local community and
+  empower others to do the same. There is much work to be done but
+  it's quite exciting, and I hope you will be along for the ride :).
+
+  Right now, the ideas are flowing and I'm working through a list of
+  experiments, piecing together the perfect solution - the one with
+  the most power. Some hardware experiments will follow in the coming
+  weeks.
+
+  At this stage, my goals are:
+  1. think fast - develop /good/ ideas as quickly as humanly possible
+  2. go slow - prioritize detailed implementations
+
+  PS. the website ([[file:infra/web][infra/web]]) is somewhat of an exception - we're just
+  throwing that online and coming back to work out the kludges later.
+
 * File Systems                                                           :fs:
 ** BTRFS                                                             :btrfs:
 #+begin_quote
@@ -208,11 +229,29 @@ Namespaces (ZNS) in NVMe SSDs.
 * Lisp                                                                 :lisp:
 - [cite/t/f:@lisp-different]
 - [[https://en.wikipedia.org/wiki/Format_(Common_Lisp)#Format_directives][Format directives]]
+- [[https://www.reddit.com/r/Common_Lisp/comments/c1nfsv/optimising_common_lisp/][Optimizing Common Lisp (reddit)]]
+- [[http://clhs.lisp.se/Body/d_dynami.htm][Dynamic Extent (clhs)]]
+- [[https://m00natic.github.io/lisp/manual-jit.html][manual-jit]]
+- [[https://blog.kingcons.io/posts/Going-Faster-with-Lisp.html][Going Faster With Lisp]]
+- [[https://unthought.net/2016/12/22-lisp-memory-woes-but-not/][Lisp memory woes, but not]]
 ** SBCL                                                               :sbcl:
 SBCL is our Common Lisp compiler of choice. We make heavy use of the implementation
 details in our software and it's infeasible to consider building our code with a
 different compiler.
 - [cite/t/f:@lisp-internals]
+- quick note on optimizations:
+  #+begin_quote
+  There is no doubt that the grail of efficiency leads to abuse. Programmers waste
+  enormous amounts of time thinking about, or worrying about, the speed of noncritical
+  parts of their programs, and these attempts at efficiency actually have a strong
+  negative impact when debugging and maintenance are considered. We should forget about
+  small efficiencies, say about 97% of the time: premature optimization is the root of all
+  evil. Yet we should not pass up our opportunities in that critical 3%. A good programmer
+  will not be lulled into complacency by such reasoning, he will be wise to look carefully
+  at the critical code; but only after that code has been identified.
+  #+end_quote
+  -- Knuth, Structured Programming with go to Statements
+
 *** GC                                                                 :gc:
 - [[https://medium.com/@MartinCracauer/llvms-garbage-collection-facilities-and-sbcl-s-generational-gc-a13eedfb1b31][LLVM and SBCL GC]]
 - [[https://www.cons.org/cracauer/cracauer-userfaultfd.c][cracauer-userfaultfd.c]]
@@ -268,6 +307,11 @@ platforms.
 
 - [[https://pvk.ca/Blog/2014/03/15/sbcl-the-ultimate-assembly-code-breadboard/][SBCL: the ultimate assembly code breadboard]]
 - [[https://pvk.ca/Blog/2014/08/16/how-to-define-new-intrinsics-in-sbcl/][how to define new intrinsics in SBCL]]
+- [[https://iq.opengenus.org/peephole-optimization-in-compiler-design/][peephole optimization in compiler design]]
+  - check the Research Issues section, all relevant to modern design
+*** DLL                                                               :dll:
+- [[https://www.sbcl.org/sbcl-internals/Foreign-Linkage.html][sbcl-internals/Foreign-Linkage]]
+- [[https://www.sbcl.org/sbcl-internals/Callbacks.html][sbcl-internals/callbacks]]
 ** ASDF                                                              :packy:
 - [[https://gitlab.common-lisp.net/asdf/asdf][gitlab.common-lisp.net]]
 - [[https://asdf.common-lisp.dev/][common-lisp.dev]]
@@ -328,5 +372,10 @@ with. Forth is both of these things, and it's a no-code dependency ;).
 - note: this isn't about 'code style'. this is about UI/UX.
 ** colors
 - [[https://wildbit.com/blog/accessible-palette-stop-using-hsl-for-color-systems][Stop Using HSL for Color Systems]]
+* Market
+** Oracle
+- ZFS
+- [[https://www.oracle.com/storage/nas/]]
+- [[https://unthought.net/joes-guide-to-the-oracle-zfs-appliance/][Hoe's guide to the Oracle ZFS Appliance]]
 * Refs
 #+print_bibliography:
