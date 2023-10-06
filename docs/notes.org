@@ -177,7 +177,11 @@ servers. This entails challenges on many different fronts.
 ** SSD                                                                 :ssd:
 -- [cite/t/f:@smart-ssd-qp]
 -- [cite/t/f:@ssd-perf-opt]
-
+https://dl.acm.org/doi/abs/10.1145/3599691.3603412
+https://storageconference.us/2019/Research/ParallelAllTheTime.pdf
+https://users.rust-lang.org/t/parallelizing-ssd-reads-and-subsequent-computations/91288/20
+https://www.xda-developers.com/crucial-t700-ssd-review/
+[[https://www.csc.lsu.edu/~fchen/publications/papers/TOS16.pdf]]
 ** Flash                                                             :flash:
 -- [cite/t/f:@flash-openssd-systems]
 ** NVMe                                                               :nvme:
@@ -199,6 +203,16 @@ Namespaces (ZNS) in NVMe SSDs.
 ** syscalls
 *** ioctl
 - [[https://elixir.bootlin.com/linux/latest/source/Documentation/userspace-api/ioctl/ioctl-number.rst][ioctl-numbers]]
+* HPC                                                                   :hpc:
+** MPI
+[[https://www.mpi-forum.org/docs/][MPI Documents]]
+[[https://docs.open-mpi.org/en/v5.0.x/][Open MPI v5 docs]]
+[[https://en.wikipedia.org/wiki/Message_Passing_Interface][wiki]]
+[[https://github.com/marcoheisig/cl-mpi][cl-mpi]]
+** HDF5
+[[https://www.hdfgroup.org/]]
+* Memory                                                                :mem:
+https://www.cidrdb.org/cidr2022/papers/p13-crotty.pdf
 * Rust                                                                 :rust:
 ** crates
 *** nix

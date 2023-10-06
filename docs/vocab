@@ -1,5 +1,6 @@
 ;;; docs/vocab --- project glossary -*- mode:outline;outline-regexp:"[-]+" -*-
 - wrt : With Respect To
+- nyi : Not Yet Implemented
 - rt : Regression Testing
 - vm : Virtual Machine
 - asm : Assembly

@@ -43,7 +43,7 @@ I'm concerned about crossing multiple language barriers (Rust<->C<->Lisp).
 
 * basic
 ** Setup
-For starters, I'm going to assume we all have Rust (via =rustup=) and Lisp (=sbcl= only)
+For starters, I'm going to assume we all have Rust (via [[https://rustup.rs/][rustup]]) and Lisp ([[https://www.sbcl.org/][sbcl]] only)
 installed on our GNU/Linux system (some tweaks needed for Darwin/Windows, not covered in
 this post).
 *** Cargo

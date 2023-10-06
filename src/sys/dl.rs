@@ -29,5 +29,3 @@ pub(crate) fn ensure_compatible_types<T, E>() -> Result<(), Error> {
         Ok(())
     }
 }
-
-
