@@ -1,5 +1,0 @@
-#+TITLE: api
-* Overview
-* Protocols
-* Filesystems
-* Objects
