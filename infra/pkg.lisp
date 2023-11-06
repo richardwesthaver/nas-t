@@ -1,3 +1,6 @@
+;;; infra/pkg.lisp --- NAS-T Infrastructure
+
+;;; Code:
 (defpackage #:nas-t.infra.linux
   (:use #:cl)
   (:export :with-mountinfo :devid :mountinfo :fstab))

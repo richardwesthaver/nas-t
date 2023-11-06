@@ -1,3 +1,6 @@
+//! src/sys/sv.rs --- subvolumes
+
+//! Code:
 use crate::{BtrfsUtilSysError, SysError};
 use crate::SysResult;
 use crate::{btrfs_util_wrap, path_to_cstr, cstr_to_path};

@@ -1,4 +1,19 @@
 ;;; src/fs/btrfs/btrfs.lisp --- BTRFS common-lisp API
+
+;; This package contains FFI bindings to the BTRFS C libraries libbtrfs and
+;; libbtrfsutil as well as some additional core routines from Rust.
+
+;;; Commentary:
+
+;; BTRFS is a core component of the NAS-T stack. We might even consider NAS-T as a
+;; wrapper around BTRFS APIs in the same we we could say that TrueNAS is a wrapper
+;; around ZFS.
+
+;; NOTE 2023-09-03: currently the app has no concrete use-cases for accessing BTRFS APIs
+;; directly from lisp. This will inevitably change, and we want the bindings for
+;; debugging and experimentation.
+
+;;; Code:
 (defpackage btrfs
   (:use :cl :sb-alien)
   (:export
@@ -10,19 +25,20 @@
 
 (in-package :btrfs)
 
-(defvar btrfs-shared-objects
-  (list '(:btrfs "/usr/lib/libbtrfs.so")
-        '(:btrfsutil "/usr/lib/libbtrfsutil.so")))
-
-(defun btrfs-lib-path (lib) (cadr (assoc lib btrfs-shared-objects)))
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defvar btrfs-shared-objects
+    (list '(:btrfs "/usr/lib/libbtrfs.so")
+          '(:btrfsutil "/usr/lib/libbtrfsutil.so")))
+  
+  (defun btrfs-lib-path (lib) (cadr (assoc lib btrfs-shared-objects))))
                 
 (defmacro when-lib-exists-p ((sym lib) &body body)
   `(let ((,sym ,(btrfs-lib-path lib)))
     (when (uiop:file-exists-p ,sym) ,@body)))
 
-(defun load-btrfs ()
+(defun load-btrfs (&optional save)
   "Open 'libbtrfs' using `dlopen'. exposing the C API to the current Lisp image."
-  (when-lib-exists-p (l :btrfs) (load-shared-object l)))
+  (when-lib-exists-p (l :btrfs) (load-shared-object l :dont-save (not save))))
 
 (defun unload-btrfs ()
   "Close 'libbtrfs' using `dlclose'."

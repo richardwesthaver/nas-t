@@ -1,3 +1,6 @@
+### infra/linux/makefile --- Linux
+
+### Code:
 # infra/linux/makefile --- NAS-T Linux Makefile
 include ../common.mk
 # 'linux/###'

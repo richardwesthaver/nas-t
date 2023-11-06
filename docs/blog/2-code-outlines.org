@@ -1,0 +1,154 @@
+#+TITLE: Code Outlines
+#+TODO: nil
+* Overview
+Source code files are hard to manage. They can get unwieldly quickly and making the
+wrong assumption about your whereabouts in the code tree can have unintended
+consequences.
+
+There are many ways to solve this problem to different degrees. We'll be talking about
+one strategy in particular which I use and recommend for any software project.
+
+Looking through the source code in the NAS-T repository you'll find some common
+commenting patterns:
+
+- every file start with at least one comment line for example:
+#+begin_src lisp
+;;; file-name.lisp --- file description
+#+end_src
+
+- Before you see any code in a file, you'll encounter this line:
+#+begin_src lisp
+;;; Code:
+#+end_src
+
+- etc
+
+What's the deal here? To be clear, I'm of the mind that comments should be
+significant. They should express to the reader something that is of a non-trivial nature
+and 'where the code starts' doesn't quite qualify. Indeed, these comments don't fit that
+model at all.
+
+The deal is that these comments aren't for the reader, they're for the developer. More
+specifically, for the developer to treat as a special meta-language to describe the
+structure of a source code file.
+
+* Outlines
+Like all my good ideas, this one is credited entirely to Emacs. In this case, the
+excellent [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Outline-Mode.html][Outline mode]]. If you are an Emacs user you've probably already used it without
+knowing -- Org mode, for example, is [[https://git.savannah.gnu.org/cgit/emacs/org-mode.git/tree/lisp/org.el?h=release_9.6.9#n4789][derived from outline-mode]].
+
+I've grown quite fond of it. Here's the summary:
+
+#+begin_quote
+Outline mode is a major mode derived from Text mode, which is specialized for editing
+outlines. It provides commands to navigate between entries in the outline structure, and
+commands to make parts of a buffer temporarily invisible, so that the outline structure
+may be more easily viewed.
+#+end_quote
+-- [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Outline-Mode.html][GNU]]
+
+** Quickstart
+If you want to jump in right away, I recommend using these keybinds in Emacs:
+
+#+tblname: outline-keys
+| <backtab> | outline-cycle-buffer             |
+| M-TAB     | outline-cycle                    |
+| M-n       | outline-next-visible-heading     |
+| M-p       | outline-previous-visible-heading |
+
+Here's a snippet which will enable the keybinds I use:
+
+#+name: enable-outline-keys
+#+begin_src emacs-lisp
+(let ((keys
+      '(("<backtab>" #'outline-cycle-buffer)
+	      ("M-TAB" #'outline-cycle)
+	      ("M-n" #'outline-next-visible-heading)
+	      ("M-p" #'outline-previous-visible-heading))))
+  (cl-loop for (k fn) in keys
+	   do (keymap-set outline-minor-mode-map k fn)))
+#+end_src
+
+Now open a file in the [[../../src/][src]] directory, like [[../../src/fs/btrfs/btrfs.lisp][this]] one, enable =outline-minor-mode= and
+move around the file with the new keybinds above.
+
+** Outlines4All
+Not all programming modes have outline support built-in. The good news is that it's easy
+to enable it.
+
+You only need to modify one variable: =outline-regexp= and enable a minor-mode:
+=outline-minor-mode=.
+
+*** Using dir-locals
+The way it's done in the NAS-T codebase is with a [[../../.dir-locals.el][.dir-locals.el]] file. Check the cons
+where /car/ is =makefile-mode=.
+
+You can do the same for any programming mode, you just need to add this form, replacing
+the string with a regular expression which matches on a /heading/. In this case we treat
+lines starting with three comment chars or more as a new heading.
+#+begin_src lisp-data
+(makefile-mode . ((outline-regexp . "###+")))
+#+end_src
+
+=outline-regexp= is declared as a safe local var, so no prompts will appear asking if
+you trust these values. You will need to configure your keybinds and enable the
+minor-mode separately though. For project-level support, that's all there is to it.
+
+*** Using init.el
+You may also modify your config to enable =outline-minor-mode= for select major-modes at
+startup. Here's a quick example from my config:
+
+#+begin_src emacs-lisp
+;;; Code:
+(require 'default 'rw/fu)
+
+(defun outline-hook (rx)
+  "Enable `outline-minor-mode' and set `outline-regexp'."
+  (setq-local outline-regexp rx)
+  (outline-minor-mode t))
+
+(defun add-outline-hook (mode rx)
+    (let ((sym (symb mode "-hook")))
+      (add-hook sym (lambda () (outline-hook rx)))))
+
+(defmacro outline-hooks (&rest pairs)
+  `(mapc (lambda (x) (add-outline-hook (car x) (cadr x))) ',pairs))
+
+(outline-hooks (asm-mode ";;;+")
+	       (nasm-mode ";;;+")	       
+	       (rust-mode "\\(//!\\|////+\\)")
+	       (sh-mode "###+")
+	       (sh-script-mode "###+")
+	       (makefile-mode "###+"))
+
+(provide 'outline-cfg)
+;;; outline-cfg.el ends here
+#+end_src
+** Default Sections
+Our default sections should look familiar - they're just Emacs Lisp defaults, with a few
+choice extensions.
+*** Source Header
+First line of every source code file.
+
+Here is the prototype in lisp:
+#+begin_src lisp
+;;; filename --- description -*- vars -*-
+#+end_src
+
+In Rust we use:
+#+begin_src rust
+//! filename --- description -*- vars -*-
+#+end_src
+
+etc.
+**** Metadata                                                   :optional:
+Some files may insert a blank line and start the =Code= heading, while others will
+include some additional information about the file such as a long-description, version,
+list of exports, etc.
+*** Commentary                                                   :optional:
+An optional programmer commentary included in source code files after the =Source
+Header= but before the =Code=. The contents are unpredictable but may include notes,
+todos, diagrams, stack notations, test results, links, tips, etc.
+*** Code
+The =Code= heading should be the final toplevel heading of any source code file. You
+may see a number of sub-headings, starting with four or more comment chars.

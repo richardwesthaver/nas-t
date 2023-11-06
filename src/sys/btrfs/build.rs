@@ -1,3 +1,6 @@
+//! src/sys/btrfs/build.rs --- btrfs bindgen builder
+
+//! Code:
 fn main() {
   println!("cargo:rustc-link-search=/usr/include");
   println!("cargo:rerun-if-changed=wrapper.h");

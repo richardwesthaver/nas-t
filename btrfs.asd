@@ -1,8 +1,14 @@
 ;;; btrfs.asd --- BTRFS SYSTEMS
+
+;; BTRFS for lisp.
+
+;;; Code:
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (require :sb-grovel))
+
 (defpackage :btrfs.sys
   (:use :cl :asdf :sb-grovel :sb-alien))
+
 (in-package :btrfs.sys)
 
 (defsystem "btrfs"
@@ -15,9 +21,7 @@
   :in-order-to ((test-op (test-op "btrfs/tests")))
   :components ((:module "src/fs/btrfs"
                 :components
-                ((:file "btrfs")
-                 (grovel-constants-file "constants"
-                                        :package :btrfs)))))
+                ((:file "btrfs")))))
 
 (defsystem "btrfs/tests"
   :version "0.1.0"

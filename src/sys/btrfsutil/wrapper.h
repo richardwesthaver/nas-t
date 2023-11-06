@@ -1,3 +1,6 @@
+/// src/sys/btrfsutil/wrapper.h --- btrfsutil wrapper
+
+/// Code:
 // #include <btrfs/version.h>
 /* #include <btrfs/kerncompat.h> */
 /* #include <btrfs/list.h> */

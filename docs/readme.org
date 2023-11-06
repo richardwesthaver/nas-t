@@ -1,3 +1,22 @@
+#+TITLE: NAS-T
+#+SUBTITLE: The NAS Technology Company
+#+AUTHOR: Richard Westhaver <ellis@rwest.io>
+#+SETUPFILE: infra/style/clean.theme
+#+INFOJS_OPT: view:info toc:nil
+#+OPTIONS: prop:t toc:nil num:nil title:t
+* Overview
+:PROPERTIES:
+:STATUS: ALPHA
+:LICENSE: MPL
+:AUTHOR: Richard Westhaver <ellis@rwest.io>
+:FORGE: https://lab.rwest.io/comp/nas-t
+:MIRROR: https://github.com/richardwesthaver/nas-t
+:END:
+
+This is the open-source codebase of the NAS Technology Company (https://nas-t.net).
+
+* About
+
 NAS-T is a grassroots Network-Attached Storage (NAS) technology and service provider
 based in New London, CT. We are a group of IT and Data specialists offering a
 replacement for managed cloud storage services such as Google Drive, DropBox, iCloud,
